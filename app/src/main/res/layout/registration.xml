@@ -1,0 +1,126 @@
+    <?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/my_panel_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="55dp" />
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:id="@+id/name"
+            android:background="@drawable/background_edit_text"
+            android:hint="Jmeno"
+            android:singleLine="true"
+            android:padding="10dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:id="@+id/sur_name"
+            android:background="@drawable/background_edit_text"
+            android:hint="Přijmení"
+            android:singleLine="true"
+            android:padding="10dp"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/background_edit_text"
+            android:hint="Email"
+            android:id="@+id/email"
+            android:singleLine="true"
+            android:gravity="center"
+            android:padding="10dp"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:background="@drawable/border_blue">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="Muž"
+                android:tag="1"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:id="@+id/man"
+                android:textColor="#FFFFFF"
+                android:background="#055296"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:text="Žena"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:id="@+id/woman"
+                android:textColor="#055296"/>
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_edit_text"
+            android:hint="Heslo"
+            android:id="@+id/password"
+            android:gravity="center"
+            android:password="true"
+            android:singleLine="true"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="Souhlasím s obchodními podmínkami"
+        android:textColor="#065fac"
+        android:layout_below="@+id/linear"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:button="@drawable/reg_checkbox" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:background="#28ce82"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/registration_button"
+        android:gravity="center"
+        android:text="REGISTROVAT SE"/>
+
+</RelativeLayout>

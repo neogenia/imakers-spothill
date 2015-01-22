@@ -1,0 +1,7 @@
+<resources>
+    <array
+        name="integer_array_name">
+        <item>Spot List</item>
+        <item>Pomoc</item>
+    </array>
+</resources>

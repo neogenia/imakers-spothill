@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/back"
+        android:tag="back"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent" >
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:id="@+id/front"
+        android:tag="front"
+        android:background="#df263c"
+        android:layout_below="@+id/listview">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="ZNAČKA"
+            android:gravity="center"
+            android:textColor="#FFFFFF"
+            android:id="@+id/mark"
+            android:layout_weight="0.9"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="SPOT"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:id="@+id/spot"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="OBLAST"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:id="@+id/region"
+            android:layout_weight="0.9"/>
+
+    </LinearLayout>
+
+</FrameLayout>

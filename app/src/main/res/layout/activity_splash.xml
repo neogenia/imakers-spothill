@@ -1,0 +1,27 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@android:color/white"
+    tools:context="com.neogenia.spothill.SplashActivity">
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_loading" />
+
+    <ImageView
+        android:id="@+id/loadingGif"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="33sp"/>
+
+</FrameLayout>

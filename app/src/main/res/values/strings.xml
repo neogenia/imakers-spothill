@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_id">644622492323210</string>
+
+    <string name="app_name">Spothill</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_campaign_detail">CampaignDetail</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_campaign_list">CampaignList</string>
+    <string name="title_activity_detail">DETAIL SPOTU</string>
+    <string name="title_activity_list_spots">KAMPANĚ</string>
+    <string name="title_activity_reminder">Reminder</string>
+    <string name="title_activity_spots">Spots</string>
+    <string name="title_activity_history">History</string>
+    <string name="title_activity_favorite">Favorite</string>
+    <string name="title_activity_kampane">Kampane</string>
+    <string name="title_activity_begin">BeginActivity</string>
+    <string name="title_activity_tutorial">TutorialActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_menu_block">MenuBlockActivity</string>
+
+</resources>

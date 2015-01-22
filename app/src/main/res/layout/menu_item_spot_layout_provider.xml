@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/back"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:tag="back" >
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:id="@+id/front"
+        android:tag="front"
+        android:background="#FFFFFF"
+        android:layout_height="80dp">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:background="#ededed"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/view1"
+            android:layout_toRightOf="@+id/item_image"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/item_image"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sleva 50 Kč na Hotsnacky"
+            android:textSize="15sp"
+            android:gravity="left"
+            android:maxLines="1"
+            android:id="@+id/item_text"
+            android:layout_toRightOf="@+id/item_image"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
+            android:textColor="#999999"/>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

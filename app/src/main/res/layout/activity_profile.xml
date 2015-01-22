@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/my_panel_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:id="@+id/top_panel"/>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/registration_button"
+        android:layout_below="@+id/top_panel">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Jméno a příjmení"
+                android:textColor="#919191"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:id="@+id/name"
+                android:layout_marginTop="1dp"
+                android:text="Martin Kluska"
+                android:textColor="#000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="13sp"
+                android:text="Email"
+                android:layout_marginTop="10dp"
+                android:textColor="#919191"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:id="@+id/email"
+                android:layout_marginTop="1dp"
+                android:text="martin@kluska.cz"
+                android:textColor="#000"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:background="@drawable/border_blue">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Muž"
+                    android:tag="1"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:id="@+id/man"
+                    android:textColor="#FFFFFF"
+                    android:background="#055296"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:text="Žena"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:id="@+id/woman"
+                    android:textColor="#055296"/>
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_edit_text"
+                android:hint="Jméno"
+                android:id="@+id/name_edit"
+                android:gravity="center"
+                android:singleLine="true"
+                android:padding="10dp"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_edit_text"
+                android:hint="Příjmení"
+                android:id="@+id/sur_name_edit"
+                android:gravity="center"
+                android:singleLine="true"
+                android:padding="10dp"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_edit_text"
+                android:hint="Staré heslo"
+                android:id="@+id/old_password"
+                android:gravity="center"
+                android:password="true"
+                android:singleLine="true"
+                android:padding="10dp"/>
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/background_edit_text"
+                android:hint="Nové heslo"
+                android:id="@+id/password"
+                android:gravity="center"
+                android:password="true"
+                android:singleLine="true"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="65dp"
+        android:background="#28ce82"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/registration_button"
+        android:gravity="center"
+        android:text="ULOŽIT PROFIL"/>
+
+</RelativeLayout>

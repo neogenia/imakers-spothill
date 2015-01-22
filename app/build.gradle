@@ -1,0 +1,65 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    packagingOptions {
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/notice.txt'
+    }
+
+    compileSdkVersion 21
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.neogenia.spothill"
+        minSdkVersion 14
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:21.0.+'
+    compile 'com.android.support:support-v4:19.0.0'
+    compile 'com.squareup.retrofit:retrofit:1.6.1'
+    compile 'com.google.android.gms:play-services:+'
+    compile 'org.springframework.android:spring-android-rest-template:1.0.1.RELEASE'
+    compile 'org.altbeacon:android-beacon-library:2+@aar'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.3.2'
+    compile 'com.google.code.gson:gson:1.7.1'
+    compile 'com.loopj.android:android-async-http:1.4.6'
+    compile 'org.slf4j:slf4j-android:1.6.1-RC1'
+    compile 'com.viewpagerindicator:library:2.4.1'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+    compile 'se.emilsjolander:stickylistheaders:+'
+    compile 'se.emilsjolander:sprinkles:+'
+    compile 'com.pnikosis:materialish-progress:1.1'
+    compile('com.facebook:facebook-android-sdk:+@aar') {
+        transitive = true
+    }
+    compile('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
+        transitive = true
+    }
+    compile('de.keyboardsurfer.android.widget:crouton:1.8.4@aar') {
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+    compile files('libs/simple.facebook-2.2.jar')
+}

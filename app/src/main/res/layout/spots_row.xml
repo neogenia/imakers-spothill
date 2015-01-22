@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="fill_parent"
+             android:layout_height="100dp">
+
+    <LinearLayout
+        android:id="@+id/back"
+        style="@style/ListBackContent"
+        android:orientation="horizontal"
+        android:tag="back">
+
+        <Button
+            android:id="@+id/reminder_btn"
+            android:layout_width="66dp"
+            android:layout_height="100dp"
+            android:background="#28ce82"
+            android:drawableTop="@drawable/reminder"
+            android:paddingTop="15dp"/>
+
+        <Button
+            android:id="@+id/like_btn"
+            android:layout_width="66dp"
+            android:layout_height="100dp"
+            android:background="#faa62f"
+            android:drawableTop="@drawable/favourite"
+            android:paddingTop="15dp"/>
+
+        <Button
+            android:id="@+id/block"
+            android:layout_width="66dp"
+            android:layout_height="100dp"
+            android:background="#df263c"
+            android:drawableTop="@drawable/block"
+            android:paddingTop="15dp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/front"
+        style="@style/ListFrontContent"
+        android:orientation="vertical"
+        android:tag="front">
+
+        <ImageView
+            android:id="@+id/item_imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="5dp"
+            android:background="@android:color/white"/>
+        
+        <ImageView
+            android:id="@+id/campaignTypeImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/item_imageView"/>
+
+        <ImageView
+            android:id="@+id/arrow_image"
+            android:layout_width="20dp"
+            android:layout_height="80dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5dp"
+            android:src="@drawable/arrow"/>
+
+        <TextView
+            android:id="@+id/item_titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/arrow_image"
+            android:layout_toRightOf="@id/item_imageView"
+            android:paddingTop="5dp"
+            android:text="title text"
+            android:textColor="@color/headline"
+            android:textSize="18dp"
+            android:singleLine="true"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/item_descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_titleTextView"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/item_imageView"
+            android:layout_toStartOf="@+id/arrow_image"
+            android:text="description text"
+            android:textColor="@color/description"
+            android:textSize="12dp"
+            android:layout_above="@+id/imageView"
+            android:singleLine="true"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignTop="@+id/remaining"
+            android:layout_toEndOf="@+id/item_imageView"
+            android:src="@drawable/status_date"/>
+
+        <TextView
+            android:id="@+id/remaining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:text="Končí: "
+            android:textColor="@color/under_description"/>
+
+    </RelativeLayout>
+</FrameLayout>

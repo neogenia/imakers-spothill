@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#FFF"
+    android:layout_height="match_parent">
+
+    <include
+        layout="@layout/my_panel_layout"
+        android:layout_width="fill_parent"
+        android:id="@+id/top_panel"
+        android:layout_height="55dp" />
+
+    <se.emilsjolander.stickylistheaders.StickyListHeadersListView
+        android:id="@+id/list"
+        android:layout_below="@+id/top_panel"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fastScrollEnabled="true" />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Žádné kampaně v OBLÍBENÝCH"
+        android:layout_centerInParent="true"
+        android:textColor="#9f9f9f"
+        android:id="@+id/place_holder_text"
+        android:visibility="gone"
+        android:textSize="18sp"/>
+
+</RelativeLayout>

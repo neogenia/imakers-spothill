@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context="imakers.fragments.OnePageTutorial">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="DETAIL KAMPANĚ"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#065fac"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Na detailu kampaně se dozvíte více  informacía opět můžete pomocí  akčních tlačítek třídit a sdílet samotný spot."
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#999999"/>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/tutorial_image_four"/>
+
+</LinearLayout>
