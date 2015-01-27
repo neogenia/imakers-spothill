@@ -97,39 +97,45 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
             @Override
             public void run() {
 
-                MyHttpClient.get("http://spothill.com/api/update/?hash="+((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
-                    public void onComplete(JSONObject data) {
+                    public void run() {
+                        MyHttpClient.get("http://spothill.com/api/update/?hash="+((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+                            @Override
+                            public void onComplete(JSONObject data) {
 
-                        if(data != null) {
+                                if(data != null) {
 
-                            Iterator it = data.keys();
+                                    Iterator it = data.keys();
 
-                            while (it.hasNext()) {
-                                try {
+                                    while (it.hasNext()) {
+                                        try {
 
-                                    String key = (String)it.next();
-                                    JSONArray array = data.getJSONArray(key);
+                                            String key = (String)it.next();
+                                            JSONArray array = data.getJSONArray(key);
 
-                                    for (int i = 0; i < array.length(); i++) {
-                                        int number = array.getInt(i);
+                                            for (int i = 0; i < array.length(); i++) {
+                                                int number = array.getInt(i);
 
-                                        String[] strings = new String[2];
+                                                String[] strings = new String[2];
 
-                                        strings[0] = ""+key;
-                                        strings[1] = ""+number;
+                                                strings[0] = ""+key;
+                                                strings[1] = ""+number;
 
-                                        new HttpRequestTaskUpdate().execute(strings);
+                                                new HttpRequestTaskUpdate().execute(strings);
+
+                                            }
+
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
 
                                     }
-                                    
-                                } catch (Exception e) {
-                                    e.printStackTrace();
+
                                 }
 
                             }
-
-                        }
+                        });
 
                     }
                 });
@@ -975,7 +981,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     //update method
     void initUpdate(SpotInitiation init) {
 
-        List<Campaign> campaigns = ((MyApplication)getApplicationContext()).getCampaigns();
+        List<Campaign> campaigns = new ArrayList<>(((MyApplication)getApplicationContext()).getCampaigns());
 
 
 
