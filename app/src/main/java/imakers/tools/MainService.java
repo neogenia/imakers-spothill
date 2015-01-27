@@ -85,7 +85,14 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
             ((MyApplication)getApplicationContext()).setUpdater(new Timer());
         }
 
-        ((MyApplication)getApplicationContext()).getUpdater().cancel();
+        try {
+
+            ((MyApplication)getApplicationContext()).getUpdater().cancel();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ((MyApplication)getApplicationContext()).setUpdater(new Timer());
         ((MyApplication)getApplicationContext()).getUpdater().schedule(new TimerTask() {
             @Override
             public void run() {
