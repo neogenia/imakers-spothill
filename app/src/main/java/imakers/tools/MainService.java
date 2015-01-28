@@ -51,7 +51,6 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     private ArrayList<Campaign> groupItems = new ArrayList<Campaign>();
     private static final int TOLERANT_EMPTY_BEACON = 0;
     List<Pair> campWaitForAdd = new ArrayList<Pair>();
-    private BeaconManager mBeaconManager;
     private Region mRegion;
     private BackgroundPowerSaver mBackgroundPowerSaver;
     @SuppressWarnings("unused")
@@ -69,15 +68,8 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         //nastavování knihovny na hlídání spotů
 
         mRegion = new Region("com.neogenia.spothill", null, null, null);
-        mBeaconManager = BeaconManager.getInstanceForApplication(this);
-        mBeaconManager.setBackgroundBetweenScanPeriod(1000l);
-        mBeaconManager.setForegroundBetweenScanPeriod(1000l);
         mBackgroundPowerSaver = new BackgroundPowerSaver(this);
         mRegionBootstrap = new RegionBootstrap(this, mRegion);
-
-        mBeaconManager.getBeaconParsers().add(
-                new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
-        mBeaconManager.debug = true;
 
         //update spot
 
@@ -842,9 +834,9 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     public void didEnterRegion(Region region) {
         try {
             //Log.d(TAG, "entered region.  starting ranging");
-            mBeaconManager.startRangingBeaconsInRegion(mRegion);
-            mBeaconManager.setRangeNotifier(this);
-            mBeaconManager.updateScanPeriods();
+            ((MyApplication)getApplicationContext()).getBeaconManager().startRangingBeaconsInRegion(mRegion);
+            ((MyApplication)getApplicationContext()).getBeaconManager().setRangeNotifier(this);
+            ((MyApplication)getApplicationContext()).getBeaconManager().updateScanPeriods();
         } catch (RemoteException e) {
             //Log.e(TAG, "Cannot start ranging");
         }

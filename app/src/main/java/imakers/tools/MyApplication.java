@@ -67,7 +67,7 @@ public class MyApplication extends Application {
         GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
         ECOMMERCE_TRACKER, // Tracker used by all ecommerce transactions from a company.
     }
-
+    BeaconManager beaconManager;
     HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
     private ArrayList<Campaign> removedCampaign;
     private List<Integer> currentSpots = new ArrayList<Integer>();
@@ -81,6 +81,19 @@ public class MyApplication extends Application {
     private SpotAdapter adapter;
     private View spotView;
     private Timer updater;
+
+    public BeaconManager getBeaconManager() {
+
+        if(beaconManager == null) {
+            createBeaconManager();
+        }
+
+        return beaconManager;
+    }
+
+    public void setBeaconManager(BeaconManager beaconManager) {
+        this.beaconManager = beaconManager;
+    }
 
     public Timer getUpdater() {
         return updater;
@@ -222,8 +235,8 @@ public class MyApplication extends Application {
         setCampaigns(new ArrayList<Campaign>());
 
         //nastavení scan delay
-        BeaconManager beaconManager = BeaconManager.getInstanceForApplication(this);
-        beaconManager.setBackgroundScanPeriod(2000l);
+
+        createBeaconManager();
 
         //Knihovna pro databázy s tvorbou tabulek
         Sprinkles sprinkles = Sprinkles.init(getApplicationContext());
@@ -279,6 +292,15 @@ public class MyApplication extends Application {
         return mTrackers.get(trackerId);
     }
 
+
+    public void createBeaconManager() {
+
+        beaconManager = BeaconManager.getInstanceForApplication(this);
+        beaconManager.setBackgroundScanPeriod(2000l);
+        //beaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
+        beaconManager.debug = true;
+
+    }
 
 
 }

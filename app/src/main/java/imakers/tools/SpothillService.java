@@ -17,4 +17,4 @@ public interface SpothillService {
     @GET("/spot/1/1?hash=prototype_neogenia_cz")
     String spot();
 
-}   
+}
