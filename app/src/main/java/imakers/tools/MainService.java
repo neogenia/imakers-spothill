@@ -55,6 +55,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     private BackgroundPowerSaver mBackgroundPowerSaver;
     @SuppressWarnings("unused")
     private RegionBootstrap mRegionBootstrap;
+    private BeaconManager beaconManager;
 
     @Override
     public void onCreate() {
@@ -70,6 +71,9 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         mRegion = new Region("com.neogenia.spothill", null, null, null);
         mBackgroundPowerSaver = new BackgroundPowerSaver(this);
         mRegionBootstrap = new RegionBootstrap(this, mRegion);
+        beaconManager = BeaconManager.getInstanceForApplication(this);
+        beaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
+
 
         //update spot
 
