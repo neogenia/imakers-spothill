@@ -72,8 +72,7 @@ public class ReminderFragment extends Fragment {
 
         //stahování položek
         MyUtils.showDialog(getActivity());
-        //((MyApplication)getActivity().getApplicationContext()).getHash()
-        MyHttpClient.get(getActivity(), MyApplication.API_URL+"api/list/1/?hash="+"martink", new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(getActivity(), MyApplication.API_URL+"api/list/1/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {
@@ -126,7 +125,6 @@ public class ReminderFragment extends Fragment {
 
                                 spot.setIsGroupCampaign(false);
                                 spot.setIsSeparator(false);
-                                MyUtils.sendNotification(spot, getActivity());
                                 campaigns1test.add(spot);
                             } catch (Exception e) {
 

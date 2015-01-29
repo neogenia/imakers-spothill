@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Beacons.iml" filepath="$PROJECT_DIR$/Beacons.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imakers-spothill.iml" filepath="$PROJECT_DIR$/imakers-spothill.iml" />
     </modules>
   </component>
 </project>
