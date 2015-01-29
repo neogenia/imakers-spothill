@@ -1002,23 +1002,24 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         List<Campaign> campaigns = new ArrayList<>(((MyApplication)getApplicationContext()).getCampaigns());
 
 
-
+    // delete all capmains from spot
         for (int i = 0; i < campaigns.size(); i++) {
             Campaign c = campaigns.get(i);
 
             if(c.getSpot() != null && c.getSpot().getMajor() != null && c.getSpot().getMinor() != null && init.getCampaigns() != null) {
                 if(c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
-                    for (Iterator iterator = campaigns.iterator(); iterator.hasNext(); ) {
-                        final Campaign campaign = (Campaign) iterator.next();
+                    campaigns.remove(i);
 
-                        if(campaign.getId().longValue() == c.getId().longValue()) {
-                            ((MyApplication)getApplication()).getCampaigns().set(i, campaign);
-                            break;
-                        }
-
-                    }
                 }
             }
+
+        }
+
+        // add new campaints
+        for (Iterator iterator = init.getCampaigns().iterator(); iterator.hasNext(); ) {
+            final Campaign campaign = (Campaign) iterator.next();
+
+            ((MyApplication)getApplication()).getCampaigns().add(campaign);
 
         }
 
