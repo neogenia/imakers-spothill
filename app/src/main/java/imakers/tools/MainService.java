@@ -3,6 +3,7 @@ package imakers.tools;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -87,6 +88,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
             e.printStackTrace();
         }
 
+        // todo: move when there are spots only, cancel when no lefr
         ((MyApplication)getApplicationContext()).setUpdater(new Timer());
         ((MyApplication)getApplicationContext()).getUpdater().schedule(new TimerTask() {
             @Override
@@ -123,7 +125,14 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                                                 final HttpRequestTaskUpdate task = new HttpRequestTaskUpdate();
 
-                                                task.execute(strings);
+                                                // needed, when used only execute, the doInBackground
+                                                // was not triggered
+                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+                                                    task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, strings);
+                                                }else{
+                                                    task.execute(strings);
+                                                }
+
 
                                             }
 
@@ -934,7 +943,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         protected void onPreExecute() {
             super.onPreExecute();
 
-            
+
         }
 
         @Override
@@ -974,6 +983,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                 return spotInitiation;
             } catch (Exception e) {
+                e.printStackTrace();
             }
             return null;
         }
