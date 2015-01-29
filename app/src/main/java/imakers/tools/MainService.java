@@ -1001,7 +1001,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     void initUpdate(SpotInitiation init) {
 
 
-        List<Campaign> campaigns = new ArrayList<>(((MyApplication) getApplicationContext()).getCampaigns());
+        List<Campaign> campaigns = new ArrayList<Campaign>(((MyApplication) getApplicationContext()).getCampaigns());
 
 
         // delete all capmains from spot
@@ -1012,7 +1012,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 if (c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
                     listItems.remove(c);
                     campaigns.remove(i);
-
+                    i--;
                 }
             }
 
@@ -1028,6 +1028,10 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
             listItems.add(campaign);
             ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
 
+        }
+
+        if(((MyApplication)getApplicationContext()).getAdapter() != null) {
+            ((MyApplication)getApplicationContext()).getAdapter().notifyDataSetChanged();
         }
 
     }

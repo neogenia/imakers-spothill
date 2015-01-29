@@ -36,7 +36,8 @@ public class DetailSpotActivity extends Activity {
 
         if(getIntent().getBooleanExtra("notify", false)) {
             ((MyApplication)getApplicationContext()).setCurrentSpots(new ArrayList<Integer>());
-            startActivity(new Intent(DetailSpotActivity.this, MainActivity.class));
+            startActivity(new Intent(DetailSpotActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
         }
         else {
             finish();
@@ -63,7 +64,8 @@ public class DetailSpotActivity extends Activity {
 
                 if(getIntent().getBooleanExtra("notify", false)) {
                     ((MyApplication)getApplicationContext()).setCurrentSpots(new ArrayList<Integer>());
-                    startActivity(new Intent(DetailSpotActivity.this, MainActivity.class));
+                    startActivity(new Intent(DetailSpotActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    finish();
                 }
                 else {
                     finish();
