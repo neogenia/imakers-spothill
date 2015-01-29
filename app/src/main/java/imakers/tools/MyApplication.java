@@ -62,6 +62,8 @@ import se.emilsjolander.sprinkles.Sprinkles;
 
 public class MyApplication extends Application {
 
+    public static final String API_URL = "http://spothill.com/";
+
     public enum TrackerName {
         APP_TRACKER, // Tracker used only in this app.
         GLOBAL_TRACKER, // Tracker used by all the apps from a company. eg: roll-up tracking.
@@ -262,6 +264,29 @@ public class MyApplication extends Application {
         stopService(new Intent(this, MainService.class));
         startService(new Intent(this, MainService.class));
 
+        setupBeaconManager();
+
+    }
+
+    protected BeaconManager mBeaconManager;
+
+    void setupBeaconManager() {
+        mBeaconManager = BeaconManager.getInstanceForApplication(this);
+        mBeaconManager.setBackgroundBetweenScanPeriod(1000l);
+        mBeaconManager.setForegroundBetweenScanPeriod(1000l);
+
+        mBeaconManager.getBeaconParsers().add(
+                new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
+        mBeaconManager.debug = true;
+    }
+
+    BeaconManager getBeaconManager() {
+
+        if (mBeaconManager == null) {
+            setupBeaconManager();
+        }
+
+        return mBeaconManager;
     }
 
 

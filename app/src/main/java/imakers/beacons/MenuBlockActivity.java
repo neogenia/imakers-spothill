@@ -72,7 +72,7 @@ public class MenuBlockActivity extends Activity {
     void favoriteCategory() {
 
         MyUtils.showDialog(this);
-        MyHttpClient.get(this, "http://spothill.com/api/list/4/?hash=" + ((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(this, MyApplication.API_URL+"api/list/4/?hash=" + ((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {
@@ -133,7 +133,7 @@ public class MenuBlockActivity extends Activity {
     void favoriteMarks() {
 
         MyUtils.showDialog(this);
-        MyHttpClient.get(this, "http://spothill.com/api/list/5/?hash=" + ((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(this, MyApplication.API_URL+"api/list/5/?hash=" + ((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {

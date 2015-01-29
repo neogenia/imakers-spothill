@@ -157,7 +157,7 @@ public class DetailSpotActivity extends Activity {
         });
 
 
-        webView.loadUrl("http://spothill.com/api/campaign/" + getIntent().getLongExtra("id", 1) + "/?hash="+((MyApplication)getApplicationContext()).getHash());
+        webView.loadUrl(MyApplication.API_URL+"api/campaign/" + getIntent().getLongExtra("id", 1) + "/?hash="+((MyApplication)getApplicationContext()).getHash());
     }
 
 

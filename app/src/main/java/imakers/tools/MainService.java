@@ -51,7 +51,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     private ArrayList<Campaign> groupItems = new ArrayList<Campaign>();
     private static final int TOLERANT_EMPTY_BEACON = 0;
     List<Pair> campWaitForAdd = new ArrayList<Pair>();
-    private BeaconManager mBeaconManager;
+
     private Region mRegion;
     private BackgroundPowerSaver mBackgroundPowerSaver;
     @SuppressWarnings("unused")
@@ -69,15 +69,9 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         //nastavování knihovny na hlídání spotů
 
         mRegion = new Region("com.neogenia.spothill", null, null, null);
-        mBeaconManager = BeaconManager.getInstanceForApplication(this);
-        mBeaconManager.setBackgroundBetweenScanPeriod(1000l);
-        mBeaconManager.setForegroundBetweenScanPeriod(1000l);
-        mBackgroundPowerSaver = new BackgroundPowerSaver(this);
-        mRegionBootstrap = new RegionBootstrap(this, mRegion);
 
-        mBeaconManager.getBeaconParsers().add(
-                new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
-        mBeaconManager.debug = true;
+        mBackgroundPowerSaver = new BackgroundPowerSaver(getApplicationContext());
+        mRegionBootstrap = new RegionBootstrap(this, mRegion);
 
         //update spot
 
@@ -92,6 +86,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         ((MyApplication)getApplicationContext()).setUpdater(new Timer());
         ((MyApplication)getApplicationContext()).getUpdater().schedule(new TimerTask() {
             @Override
@@ -100,7 +95,11 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        MyHttpClient.get("http://spothill.com/api/update/?hash="+((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+                        String url  = MyApplication.API_URL+"api/updates/?hash="+((MyApplication)getApplicationContext()).getHash();
+
+                        Log.d("URL", url);
+
+                        MyHttpClient.get(url, new RequestParams(), new MyAsyncLisener() {
                             @Override
                             public void onComplete(JSONObject data) {
 
@@ -122,7 +121,9 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                                                 strings[0] = ""+key;
                                                 strings[1] = ""+number;
 
-                                                new HttpRequestTaskUpdate().execute(strings);
+                                                final HttpRequestTaskUpdate task = new HttpRequestTaskUpdate();
+
+                                                task.execute(strings);
 
                                             }
 
@@ -141,7 +142,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 });
 
             }
-        }, 60000, 60000);
+        }, 20000, 20000);
 
     }
 
@@ -842,9 +843,9 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     public void didEnterRegion(Region region) {
         try {
             //Log.d(TAG, "entered region.  starting ranging");
-            mBeaconManager.startRangingBeaconsInRegion(mRegion);
-            mBeaconManager.setRangeNotifier(this);
-            mBeaconManager.updateScanPeriods();
+            (((MyApplication)getApplicationContext()).getBeaconManager()).startRangingBeaconsInRegion(mRegion);
+            (((MyApplication)getApplicationContext()).getBeaconManager()).setRangeNotifier(this);
+            (((MyApplication)getApplicationContext()).getBeaconManager()).updateScanPeriods();
         } catch (RemoteException e) {
             //Log.e(TAG, "Cannot start ranging");
         }
@@ -884,7 +885,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                 String url = "";
 
-                url = "http://spothill.com/api/spot/" + beacon.getId2().toString() +
+                url = MyApplication.API_URL+"api/spot/" + beacon.getId2().toString() +
                         "/" + beacon.getId3().toString() + "/?hash=" + ((MyApplication) getApplicationContext()).getHash();
 
                 RestTemplate restTemplate = new RestTemplate();
@@ -930,6 +931,13 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
     class HttpRequestTaskUpdate extends AsyncTask<String[], Void, SpotInitiation> {
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+            
+        }
+
+        @Override
         protected SpotInitiation doInBackground(String[]... params) {
             try {
 
@@ -947,7 +955,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                 String url = "";
 
-                url = "http://spothill.com/api/spot/" + beacon[0] +
+                url = MyApplication.API_URL+"api/spot/" + beacon[0] +
                         "/" + beacon[1] + "/?hash=" + ((MyApplication) getApplicationContext()).getHash();
 
                 RestTemplate restTemplate = new RestTemplate();

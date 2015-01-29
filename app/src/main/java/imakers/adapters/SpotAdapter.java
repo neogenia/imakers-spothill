@@ -636,7 +636,7 @@ public class SpotAdapter extends ArrayAdapter<Campaign> {
         });
         //notifyDataSetChanged();
         MyUtils.showDialog(c);
-        MyHttpClient.get(c, "http://spothill.com/api/list/" + id + "/?hash=" + ((MyApplication) c.getApplicationContext()).getHash() + "&count=40&page=1", new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(c, MyApplication.API_URL+"api/list/" + id + "/?hash=" + ((MyApplication) c.getApplicationContext()).getHash() + "&count=40&page=1", new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {

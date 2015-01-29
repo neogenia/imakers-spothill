@@ -300,7 +300,7 @@ public class HistoriFragment extends Fragment {
         campaigns1test.clear();
         test1adapter.notifyDataSetChanged();
         MyUtils.showDialog(getActivity());
-        MyHttpClient.get(getActivity(), "http://spothill.com/api/list/"+id+"/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash()+"&count=40&page=1", new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(getActivity(), MyApplication.API_URL+"api/list/"+id+"/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash()+"&count=40&page=1", new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {

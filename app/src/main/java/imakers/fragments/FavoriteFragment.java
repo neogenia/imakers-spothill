@@ -349,7 +349,7 @@ public class FavoriteFragment extends Fragment {
     void favoriteMarks(final View v) {
 
         MyUtils.showDialog(getActivity());
-        MyHttpClient.get(getActivity(), "http://spothill.com/api/list/9/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(getActivity(), MyApplication.API_URL+"api/list/9/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {
@@ -412,7 +412,7 @@ public class FavoriteFragment extends Fragment {
     void favoriteCampaings(final View v) {
 
         MyUtils.showDialog(getActivity());
-        MyHttpClient.get(getActivity(), "http://spothill.com/api/list/2/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(getActivity(), MyApplication.API_URL+"api/list/2/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {
