@@ -152,7 +152,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 });
 
             }
-        }, 60000 * 5, 60000 * 5);
+        }, 60000 * 1, 60000 * 1);
 
     }
 
@@ -881,15 +881,6 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         protected SpotInitiation doInBackground(Beacon... params) {
             try {
 
-                ((MyApplication) getApplicationContext()).getMainActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //isVisible = true;
-
-                        //whell.setVisibility(View.VISIBLE);
-
-                    }
-                });
                 Beacon beacon = params[0];
                 //MyUtils.showDialog(getMyActivity());
 
@@ -951,15 +942,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         protected SpotInitiation doInBackground(String[]... params) {
             try {
 
-                ((MyApplication) getApplicationContext()).getMainActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        //isVisible = true;
 
-                        //whell.setVisibility(View.VISIBLE);
-
-                    }
-                });
                 String[] beacon = params[0];
                 //MyUtils.showDialog(getMyActivity());
 
@@ -1011,8 +994,8 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
             if (c.getSpot() != null && c.getSpot().getMajor() != null && c.getSpot().getMinor() != null && init.getCampaigns() != null) {
                 if (c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
                     listItems.remove(c);
-                    campaigns.remove(i);
-                    i--;
+                    ((MyApplication) getApplication()).getCampaigns().remove(c);
+
                 }
             }
 
@@ -1022,8 +1005,17 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         for (Iterator iterator = init.getCampaigns().iterator(); iterator.hasNext(); ) {
             final Campaign campaign = (Campaign) iterator.next();
 
+            // create spot object becouse is null
+            final Spot spot   = new Spot();
+
+            spot.setHash(init.getHashSpot());
+            spot.setMajor(init.getMajor());
+            spot.setMinor(init.getMinor());
+            spot.setTime(System.currentTimeMillis());
+
             campaign.setIsGroupCampaign(false);
             campaign.setIsSeparator(false);
+            campaign.setSpot(spot);
 
             listItems.add(campaign);
             ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
