@@ -54,6 +54,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     List<Pair> campWaitForAdd = new ArrayList<Pair>();
 
     private Region mRegion;
+    
     private BackgroundPowerSaver mBackgroundPowerSaver;
     @SuppressWarnings("unused")
     private RegionBootstrap mRegionBootstrap;
@@ -151,7 +152,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 });
 
             }
-        }, 20000, 20000);
+        }, 60000 * 5, 60000 * 5);
 
     }
 

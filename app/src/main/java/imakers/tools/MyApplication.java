@@ -47,9 +47,11 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import imakers.adapters.SpotAdapter;
+import imakers.beacons.BuildConfig;
 import imakers.beacons.DetailSpotActivity;
 import imakers.beacons.MainActivity;
 import imakers.beacons.R;
+import imakers.beacons.TimedBeaconSimulator;
 import imakers.classes.Campaign;
 import imakers.classes.ChangeClass;
 import imakers.classes.Pair;
@@ -278,6 +280,12 @@ public class MyApplication extends Application {
         mBeaconManager.getBeaconParsers().add(
                 new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
         mBeaconManager.debug = true;
+
+        if (BuildConfig.DEBUG) {
+            BeaconManager.setBeaconSimulator(new TimedBeaconSimulator());
+            ((TimedBeaconSimulator) BeaconManager.getBeaconSimulator()).createTimedSimulatedBeacons();
+        }
+
     }
 
     BeaconManager getBeaconManager() {
