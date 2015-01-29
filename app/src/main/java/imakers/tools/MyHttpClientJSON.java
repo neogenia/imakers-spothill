@@ -28,7 +28,7 @@ import imakers.interfaces.MyAsyncTaskInterface;
 public class MyHttpClientJSON {
 
 	private static AsyncHttpClient client = new AsyncHttpClient();
-	private final static String BASE_URL = "http://spothill.com/api/";
+	private final static String BASE_URL = MyApplication.API_URL+"api/";
 
 	public static void post(final Activity ac, final String url, final JSONObject object,
 			final MyAsyncLisener lisener) throws UnsupportedEncodingException {

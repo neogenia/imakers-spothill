@@ -72,7 +72,7 @@ public class ReminderFragment extends Fragment {
 
         //stahování položek
         MyUtils.showDialog(getActivity());
-        MyHttpClient.get(getActivity(), "http://spothill.com/api/list/1/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(getActivity(), MyApplication.API_URL+"api/list/1/?hash="+((MyApplication)getActivity().getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {

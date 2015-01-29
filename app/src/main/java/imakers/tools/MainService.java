@@ -3,6 +3,7 @@ package imakers.tools;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
@@ -51,11 +52,11 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     private ArrayList<Campaign> groupItems = new ArrayList<Campaign>();
     private static final int TOLERANT_EMPTY_BEACON = 0;
     List<Pair> campWaitForAdd = new ArrayList<Pair>();
+
     private Region mRegion;
     private BackgroundPowerSaver mBackgroundPowerSaver;
     @SuppressWarnings("unused")
     private RegionBootstrap mRegionBootstrap;
-    private BeaconManager beaconManager;
 
     @Override
     public void onCreate() {
@@ -69,45 +70,49 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
         //nastavování knihovny na hlídání spotů
 
         mRegion = new Region("com.neogenia.spothill", null, null, null);
-        mBackgroundPowerSaver = new BackgroundPowerSaver(this);
-        mRegionBootstrap = new RegionBootstrap(this, mRegion);
-        beaconManager = BeaconManager.getInstanceForApplication(this);
-        beaconManager.getBeaconParsers().add(new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
 
+        mBackgroundPowerSaver = new BackgroundPowerSaver(getApplicationContext());
+        mRegionBootstrap = new RegionBootstrap(this, mRegion);
 
         //update spot
 
-        if(((MyApplication)getApplicationContext()).getUpdater() == null) {
-            ((MyApplication)getApplicationContext()).setUpdater(new Timer());
+        if (((MyApplication) getApplicationContext()).getUpdater() == null) {
+            ((MyApplication) getApplicationContext()).setUpdater(new Timer());
         }
 
         try {
 
-            ((MyApplication)getApplicationContext()).getUpdater().cancel();
+            ((MyApplication) getApplicationContext()).getUpdater().cancel();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ((MyApplication)getApplicationContext()).setUpdater(new Timer());
-        ((MyApplication)getApplicationContext()).getUpdater().schedule(new TimerTask() {
+
+        // todo: move when there are spots only, cancel when no lefr
+        ((MyApplication) getApplicationContext()).setUpdater(new Timer());
+        ((MyApplication) getApplicationContext()).getUpdater().schedule(new TimerTask() {
             @Override
             public void run() {
 
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
-                        MyHttpClient.get("http://spothill.com/api/update/?hash="+((MyApplication)getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+                        String url = MyApplication.API_URL + "api/updates/?hash=" + ((MyApplication) getApplicationContext()).getHash();
+
+                        Log.d("URL", url);
+
+                        MyHttpClient.get(url, new RequestParams(), new MyAsyncLisener() {
                             @Override
                             public void onComplete(JSONObject data) {
 
-                                if(data != null) {
+                                if (data != null) {
 
                                     Iterator it = data.keys();
 
                                     while (it.hasNext()) {
                                         try {
 
-                                            String key = (String)it.next();
+                                            String key = (String) it.next();
                                             JSONArray array = data.getJSONArray(key);
 
                                             for (int i = 0; i < array.length(); i++) {
@@ -115,10 +120,19 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                                                 String[] strings = new String[2];
 
-                                                strings[0] = ""+key;
-                                                strings[1] = ""+number;
+                                                strings[0] = "" + key;
+                                                strings[1] = "" + number;
 
-                                                new HttpRequestTaskUpdate().execute(strings);
+                                                final HttpRequestTaskUpdate task = new HttpRequestTaskUpdate();
+
+                                                // needed, when used only execute, the doInBackground
+                                                // was not triggered
+                                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                                                    task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, strings);
+                                                } else {
+                                                    task.execute(strings);
+                                                }
+
 
                                             }
 
@@ -137,7 +151,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 });
 
             }
-        }, 60000, 60000);
+        }, 20000, 20000);
 
     }
 
@@ -145,7 +159,6 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
         List<Beacon> actual = new ArrayList<Beacon>();
         List<String> actualHash = new ArrayList<String>();
-
 
 
         // když nejsou žádné kampaně, protože pro změnu při nějakých akcích používám, tak se projostotu vymažou i spoty
@@ -559,7 +572,6 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     Boolean isChange = false;
 
 
-
     //NEJHLAVNĚJŠÍ METODA přidávání kampaní
     void init(SpotInitiation spotInitiation) {
 
@@ -838,9 +850,9 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     public void didEnterRegion(Region region) {
         try {
             //Log.d(TAG, "entered region.  starting ranging");
-            ((MyApplication)getApplicationContext()).getBeaconManager().startRangingBeaconsInRegion(mRegion);
-            ((MyApplication)getApplicationContext()).getBeaconManager().setRangeNotifier(this);
-            ((MyApplication)getApplicationContext()).getBeaconManager().updateScanPeriods();
+            (((MyApplication) getApplicationContext()).getBeaconManager()).startRangingBeaconsInRegion(mRegion);
+            (((MyApplication) getApplicationContext()).getBeaconManager()).setRangeNotifier(this);
+            (((MyApplication) getApplicationContext()).getBeaconManager()).updateScanPeriods();
         } catch (RemoteException e) {
             //Log.e(TAG, "Cannot start ranging");
         }
@@ -880,7 +892,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                 String url = "";
 
-                url = "http://spothill.com/api/spot/" + beacon.getId2().toString() +
+                url = MyApplication.API_URL + "api/spot/" + beacon.getId2().toString() +
                         "/" + beacon.getId3().toString() + "/?hash=" + ((MyApplication) getApplicationContext()).getHash();
 
                 RestTemplate restTemplate = new RestTemplate();
@@ -926,6 +938,13 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
     class HttpRequestTaskUpdate extends AsyncTask<String[], Void, SpotInitiation> {
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+        }
+
+        @Override
         protected SpotInitiation doInBackground(String[]... params) {
             try {
 
@@ -943,7 +962,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                 String url = "";
 
-                url = "http://spothill.com/api/spot/" + beacon[0] +
+                url = MyApplication.API_URL + "api/spot/" + beacon[0] +
                         "/" + beacon[1] + "/?hash=" + ((MyApplication) getApplicationContext()).getHash();
 
                 RestTemplate restTemplate = new RestTemplate();
@@ -962,6 +981,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
                 return spotInitiation;
             } catch (Exception e) {
+                e.printStackTrace();
             }
             return null;
         }
@@ -977,26 +997,33 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     //update method
     void initUpdate(SpotInitiation init) {
 
-        List<Campaign> campaigns = new ArrayList<>(((MyApplication)getApplicationContext()).getCampaigns());
+
+        List<Campaign> campaigns = new ArrayList<>(((MyApplication) getApplicationContext()).getCampaigns());
 
 
-
+        // delete all capmains from spot
         for (int i = 0; i < campaigns.size(); i++) {
             Campaign c = campaigns.get(i);
 
-            if(c.getSpot() != null && c.getSpot().getMajor() != null && c.getSpot().getMinor() != null && init.getCampaigns() != null) {
-                if(c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
-                    for (Iterator iterator = campaigns.iterator(); iterator.hasNext(); ) {
-                        final Campaign campaign = (Campaign) iterator.next();
+            if (c.getSpot() != null && c.getSpot().getMajor() != null && c.getSpot().getMinor() != null && init.getCampaigns() != null) {
+                if (c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
+                    listItems.remove(c);
+                    campaigns.remove(i);
 
-                        if(campaign.getId().longValue() == c.getId().longValue()) {
-                            ((MyApplication)getApplication()).getCampaigns().set(i, campaign);
-                            break;
-                        }
-
-                    }
                 }
             }
+
+        }
+
+        // add new campaints
+        for (Iterator iterator = init.getCampaigns().iterator(); iterator.hasNext(); ) {
+            final Campaign campaign = (Campaign) iterator.next();
+
+            campaign.setIsGroupCampaign(false);
+            campaign.setIsSeparator(false);
+
+            listItems.add(campaign);
+            ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
 
         }
 

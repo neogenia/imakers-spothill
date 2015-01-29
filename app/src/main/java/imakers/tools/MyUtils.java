@@ -201,9 +201,9 @@ public class MyUtils {
 
     public static void createAction(final Activity activity, Long id, Long actionId) {
 
-        Log.v("kalkub", "http://spothill.com/api/action/" + actionId + "/" + id + "/?hash=" + ((MyApplication) activity.getApplicationContext()).getHash());
+        Log.v("kalkub", MyApplication.API_URL+"api/action/" + actionId + "/" + id + "/?hash=" + ((MyApplication) activity.getApplicationContext()).getHash());
 
-        MyHttpClient.get(activity, "http://spothill.com/api/action/" + actionId + "/" + id + "/?hash=" + ((MyApplication) activity.getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
+        MyHttpClient.get(activity, MyApplication.API_URL+"api/action/" + actionId + "/" + id + "/?hash=" + ((MyApplication) activity.getApplicationContext()).getHash(), new RequestParams(), new MyAsyncLisener() {
             @Override
             public void onComplete(JSONObject data) {
                 if (data != null) {
