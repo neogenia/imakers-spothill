@@ -214,7 +214,7 @@ public class MyUtils {
 
     }
 
-    public static void sendNotification(Campaign campaign, Activity activity) {
+    public static void sendNotification(Campaign campaign, Context activity) {
 
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 

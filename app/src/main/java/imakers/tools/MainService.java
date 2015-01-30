@@ -152,7 +152,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 });
 
             }
-        }, 60000 * 1, 60000 * 1);
+        }, 60000 * 5, 60000 * 5);
 
     }
 
@@ -1019,11 +1019,23 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
             listItems.add(campaign);
             ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    MyUtils.sendNotification(campaign, MainService.this);
+                }
+            });
+
 
         }
 
         if(((MyApplication)getApplicationContext()).getAdapter() != null) {
-            ((MyApplication)getApplicationContext()).getAdapter().notifyDataSetChanged();
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    ((MyApplication)getApplicationContext()).getAdapter().notifyDataSetChanged();
+                }
+            });
         }
 
     }
