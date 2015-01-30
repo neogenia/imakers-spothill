@@ -30,15 +30,30 @@ public class MyHttpClient {
 
 	public static void get(final String url, final RequestParams params,  final MyAsyncLisener lisener, final int repeat) {
 
+
+
         try {
 
             MyUtils.Log(localActivity).debug("URL: {} PARAMS: {}", url, params.toString());
+
 
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        try {
+
+            if(((MyApplication)localActivity.getApplicationContext()).getHash() == null) {
+                return;
+            }
+            if(((MyApplication)localActivity.getApplicationContext()).getHash().isEmpty()) {
+                return;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Log.v("kalkub", url);
 
