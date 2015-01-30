@@ -263,9 +263,6 @@ public class MyApplication extends Application {
             }
         });
 
-        stopService(new Intent(this, MainService.class));
-        startService(new Intent(this, MainService.class));
-
         setupBeaconManager();
 
     }

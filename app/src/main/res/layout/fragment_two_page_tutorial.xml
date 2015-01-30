@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
+        android:layout_gravity="center_horizontal"
         android:src="@drawable/tutorial_image_two"/>
 
 </LinearLayout>

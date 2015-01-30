@@ -33,6 +33,7 @@
         android:layout_marginRight="10dp"
         android:scaleType="fitCenter"
         android:adjustViewBounds="true"
+        android:layout_gravity="center_horizontal"
         android:src="@drawable/tutorial_image_one"/>
 
 </LinearLayout>
