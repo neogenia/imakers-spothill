@@ -40,6 +40,7 @@ import imakers.beacons.R;
 import imakers.classes.Campaign;
 import imakers.classes.Pair;
 import imakers.classes.Spot;
+import imakers.classes.SpotCheck;
 import imakers.classes.SpotInitiation;
 import imakers.interfaces.MyAsyncLisener;
 import se.emilsjolander.sprinkles.Query;
@@ -52,7 +53,6 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
     private ArrayList<Campaign> groupItems = new ArrayList<Campaign>();
     private static final int TOLERANT_EMPTY_BEACON = 0;
     List<Pair> campWaitForAdd = new ArrayList<Pair>();
-
     private Region mRegion;
     
     private BackgroundPowerSaver mBackgroundPowerSaver;
@@ -168,6 +168,24 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
             ((MyApplication) getApplicationContext()).setCurrentSpots(new ArrayList<Integer>());
         }
 
+        if(((MyApplication) getApplicationContext()).getCurrentSpots().size() == 0) {
+            ((MyApplication)getApplicationContext()).setSpotForDelete(new ArrayList<SpotCheck>());
+        }
+
+        // mazání spotů po 5h
+        for (int i = 0; i < ((MyApplication)getApplicationContext()).getSpotForDelete().size(); i++) {
+            SpotCheck spotCheck = ((MyApplication)getApplicationContext()).getSpotForDelete().get(i);
+
+            if(spotCheck.getDeleteTime() <= System.currentTimeMillis()) {
+                if(((MyApplication)getApplicationContext()).getCurrentSpots().contains(Integer.valueOf(spotCheck.getHash()))) {
+                    int index = ((MyApplication)getApplicationContext()).getCurrentSpots().indexOf(Integer.valueOf(spotCheck.getHash()));
+                    ((MyApplication)getApplicationContext()).getCurrentSpots().remove(index);
+                    ((MyApplication)getApplicationContext()).getSpotForDelete().remove(i);
+                    i--;
+                }
+            }
+        }
+
         if (beacons.size() > 0) {
 
             for (Iterator iterator = beacons.iterator(); iterator.hasNext(); ) {
@@ -184,6 +202,8 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
                 }
 
                 if (can) {
+                    //přidávání spotů
+                    ((MyApplication)getApplicationContext()).getSpotForDelete().add(new SpotCheck((System.currentTimeMillis()+(60*1000*300)), hash));
                     ((MyApplication) getApplicationContext()).getCurrentSpots().add(hash);
                     new HttpRequestTask().execute(beacon);
                 }
@@ -985,7 +1005,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
 
         List<Campaign> campaigns = new ArrayList<Campaign>(((MyApplication) getApplicationContext()).getCampaigns());
-
+        List<Campaign> deletes = new ArrayList<Campaign>();
 
         // delete all capmains from spot
         for (int i = 0; i < campaigns.size(); i++) {
@@ -993,6 +1013,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
             if (c.getSpot() != null && c.getSpot().getMajor() != null && c.getSpot().getMinor() != null && init.getCampaigns() != null) {
                 if (c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
+                    deletes.add(c);
                     listItems.remove(c);
                     ((MyApplication) getApplication()).getCampaigns().remove(c);
 
@@ -1019,12 +1040,14 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
             listItems.add(campaign);
             ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    MyUtils.sendNotification(campaign, MainService.this);
-                }
-            });
+            if(!deletes.contains(campaign)) {
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        MyUtils.sendNotification(campaign, MainService.this);
+                    }
+                });
+            }
 
 
         }

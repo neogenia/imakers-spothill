@@ -56,6 +56,7 @@ import imakers.classes.Campaign;
 import imakers.classes.ChangeClass;
 import imakers.classes.Pair;
 import imakers.classes.Spot;
+import imakers.classes.SpotCheck;
 import imakers.classes.SpotInitiation;
 import imakers.fragments.HomeFragment;
 import se.emilsjolander.sprinkles.Migration;
@@ -85,6 +86,15 @@ public class MyApplication extends Application {
     private SpotAdapter adapter;
     private View spotView;
     private Timer updater;
+    List<SpotCheck> spotForDelete = new ArrayList<SpotCheck>();
+
+    public List<SpotCheck> getSpotForDelete() {
+        return spotForDelete;
+    }
+
+    public void setSpotForDelete(List<SpotCheck> spotForDelete) {
+        this.spotForDelete = spotForDelete;
+    }
 
     public Timer getUpdater() {
         return updater;
@@ -276,7 +286,7 @@ public class MyApplication extends Application {
 
         mBeaconManager.getBeaconParsers().add(
                 new BeaconParser().setBeaconLayout("m:0-3=4c000215,i:4-19,i:20-21,i:22-23,p:24-24"));
-        mBeaconManager.debug = true;
+        //mBeaconManager.debug = true;
 
         if (BuildConfig.DEBUG) {
             BeaconManager.setBeaconSimulator(new TimedBeaconSimulator());
