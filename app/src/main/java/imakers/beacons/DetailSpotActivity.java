@@ -36,7 +36,7 @@ public class DetailSpotActivity extends Activity {
 
         if(getIntent().getBooleanExtra("notify", false)) {
             ((MyApplication)getApplicationContext()).setCurrentSpots(new ArrayList<Integer>());
-            startActivity(new Intent(DetailSpotActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            startActivity(new Intent(DetailSpotActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK));
             finish();
         }
         else {
@@ -54,22 +54,7 @@ public class DetailSpotActivity extends Activity {
         panel.setActionForBack(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(((MyApplication)getApplicationContext()).getChange() != null && ((MyApplication)getApplicationContext()).getChange().size() != 0) {
-                    ((MyApplication)getApplicationContext()).setIsChange(true);
-                }
-                else {
-                    ((MyApplication)getApplicationContext()).setIsChange(false);
-                }
-
-                if(getIntent().getBooleanExtra("notify", false)) {
-                    ((MyApplication)getApplicationContext()).setCurrentSpots(new ArrayList<Integer>());
-                    startActivity(new Intent(DetailSpotActivity.this, MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                    finish();
-                }
-                else {
-                    finish();
-                }
+                onBackPressed();
             }
         });
 

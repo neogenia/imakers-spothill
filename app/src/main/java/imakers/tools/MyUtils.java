@@ -228,7 +228,7 @@ public class MyUtils {
         builder.setSound(alarmSound);
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(activity);
-        stackBuilder.addNextIntent(new Intent(activity, DetailSpotActivity.class).putExtra("id", campaign.getId()).putExtra("notify", true).putExtra("name", campaign.getProvider() == null ? "" : campaign.getProvider().getTitle()).putExtra("name_spot", campaign.getTitle()));
+        stackBuilder.addNextIntent(new Intent(activity, DetailSpotActivity.class).putExtra("id", campaign.getId()).putExtra("notify", true).putExtra("name", campaign.getProvider() == null ? "" : campaign.getProvider().getTitle()).putExtra("name_spot", campaign.getTitle()).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK));
         PendingIntent resultPendingIntent =
                 stackBuilder.getPendingIntent(campaign.getId().intValue(), PendingIntent.FLAG_CANCEL_CURRENT);
         builder.setContentIntent(resultPendingIntent);
