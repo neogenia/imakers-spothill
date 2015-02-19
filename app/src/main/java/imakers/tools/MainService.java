@@ -1040,7 +1040,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
             listItems.add(campaign);
             ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
-            if(!deletes.contains(campaign)) {
+            if(!deletes.contains(campaign) && campaign.getNotificationTitle() != null && !campaign.getNotificationTitle().isEmpty()) {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
