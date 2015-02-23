@@ -1005,7 +1005,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
 
         List<Campaign> campaigns = new ArrayList<Campaign>(((MyApplication) getApplicationContext()).getCampaigns());
-        List<Campaign> deletes = new ArrayList<Campaign>();
+        //List<Campaign> deletes = new ArrayList<Campaign>();
 
         // delete all capmains from spot
         for (int i = 0; i < campaigns.size(); i++) {
@@ -1013,7 +1013,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
             if (c.getSpot() != null && c.getSpot().getMajor() != null && c.getSpot().getMinor() != null && init.getCampaigns() != null) {
                 if (c.getSpot().getMajor().intValue() == init.getMajor().intValue() && c.getSpot().getMinor().intValue() == init.getMinor().intValue()) {
-                    deletes.add(c);
+                    //deletes.add(c);
                     listItems.remove(c);
                     ((MyApplication) getApplication()).getCampaigns().remove(c);
 
@@ -1040,7 +1040,7 @@ public class MainService extends Service implements BootstrapNotifier, RangeNoti
 
             listItems.add(campaign);
             ((MyApplication) getApplication()).getCampaigns().add(0, campaign);
-            if(!deletes.contains(campaign) && campaign.getNotificationTitle() != null && !campaign.getNotificationTitle().isEmpty()) {
+            if(campaign.getNotificationTitle() != null && !campaign.getNotificationTitle().isEmpty()) {
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
