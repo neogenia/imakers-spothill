@@ -1,89 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:wheel="http://schemas.android.com/apk/res-auto">
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:wheel="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Žádné kampaně v OKOLÍ"
-        android:layout_centerInParent="true"
-        android:textColor="#9f9f9f"
-        android:id="@+id/place_holder_text"
-        android:visibility="invisible"
-        android:textSize="18sp"/>
-
-
-
-    <com.fortysevendeg.swipelistview.SwipeListView
-        xmlns:swipe="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/listview"
-        android:listSelector="#00000000"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/top_panel"
-        swipe:swipeFrontView="@+id/front"
-        swipe:swipeBackView="@+id/back"
-        android:divider="#FFF"
-        android:dividerHeight="0px"
-        />
-
-    <!--<LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="70dp"
-        android:id="@+id/inside_panel"
-        android:orientation="horizontal"
-        android:background="#df263c"
-        android:layout_below="@+id/listview">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="ZNAČKA"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:layout_weight="0.9"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="SPOT"
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:layout_weight="1"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="OBLAST"
-            android:textColor="#FFFFFF"
-            android:gravity="center"
-            android:layout_weight="0.9"/>
-
-    </LinearLayout>
-
-    <com.fortysevendeg.swipelistview.SwipeListView
-        xmlns:swipe="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/listview2"
-        android:listSelector="#00000000"
-        android:layout_width="fill_parent"
-        android:layout_height="250dp"
-        android:layout_below="@+id/inside_panel"
-        swipe:swipeFrontView="@+id/front"
-        swipe:swipeBackView="@+id/back"
-        />-->
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/campaigns_around"
+		android:layout_centerInParent="true"
+		android:textColor="#9f9f9f"
+		android:id="@+id/place_holder_text"
+		android:visibility="invisible"
+		android:textSize="18sp"/>
 
 
-    <com.pnikosis.materialishprogress.ProgressWheel
-        android:id="@+id/progress_wheel"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        wheel:barColor="#5588FF"
-        android:visibility="gone"
-        wheel:progressIndeterminate="true" />
+
+	<com.fortysevendeg.swipelistview.SwipeListView
+		xmlns:swipe="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/listview"
+		android:listSelector="#00000000"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/top_panel"
+		swipe:swipeFrontView="@+id/front"
+		swipe:swipeBackView="@+id/back"
+		android:divider="#FFF"
+		android:dividerHeight="0px"
+		/>
+
+	<com.pnikosis.materialishprogress.ProgressWheel
+		android:id="@+id/progress_wheel"
+		android:layout_width="80dp"
+		android:layout_height="80dp"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="40dp"
+		wheel:barColor="#5588FF"
+		android:visibility="gone"
+		wheel:progressIndeterminate="true"/>
 
 </RelativeLayout>

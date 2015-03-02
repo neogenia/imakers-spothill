@@ -22,7 +22,7 @@
             android:gravity="center"
             android:id="@+id/name"
             android:background="@drawable/background_edit_text"
-            android:hint="Jmeno"
+            android:hint="@string/name"
             android:singleLine="true"
             android:padding="10dp"/>
 
@@ -33,7 +33,7 @@
             android:gravity="center"
             android:id="@+id/sur_name"
             android:background="@drawable/background_edit_text"
-            android:hint="Přijmení"
+            android:hint="@string/surname"
             android:singleLine="true"
             android:padding="10dp"/>
 
@@ -43,7 +43,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/background_edit_text"
-            android:hint="Email"
+            android:hint="@string/email"
             android:id="@+id/email"
             android:singleLine="true"
             android:gravity="center"
@@ -62,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:text="Muž"
+                android:text="@string/male"
                 android:tag="1"
                 android:textSize="18sp"
                 android:gravity="center"
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:text="Žena"
+                android:text="@string/female"
                 android:textSize="18sp"
                 android:gravity="center"
                 android:id="@+id/woman"
@@ -89,7 +89,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/background_edit_text"
-            android:hint="Heslo"
+            android:hint="@string/password"
             android:id="@+id/password"
             android:gravity="center"
             android:password="true"
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:text="Souhlasím s obchodními podmínkami"
+        android:text="@string/terms_conditions"
         android:textColor="#065fac"
         android:layout_below="@+id/linear"
         android:layout_alignParentRight="true"
@@ -121,6 +121,6 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/registration_button"
         android:gravity="center"
-        android:text="REGISTROVAT SE"/>
+        android:text="@string/registrate"/>
 
 </RelativeLayout>

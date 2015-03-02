@@ -32,7 +32,7 @@ public class ProfileActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        panel = new MyActionPanel(this, "Účet");
+        panel = new MyActionPanel(this, getString(R.string.profile));
 
         //isMan = true;
 
@@ -167,7 +167,7 @@ public class ProfileActivity extends Activity {
                                     }
 
                                     MyUtils.SavePreferences("login_json", object2.toString(), ProfileActivity.this);
-                                    MyUtils.showToast("Profil upraven!", ProfileActivity.this);
+                                    MyUtils.showToast(getString(R.string.profile_changed), ProfileActivity.this);
 
                                     try {
                                         ((TextView)findViewById(R.id.name)).setText(object2.getString("name")+" "+object2.getString("surname"));

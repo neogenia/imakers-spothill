@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="DETAIL KAMPANĚ"
+        android:text="@string/campaign_detail"
         android:textSize="23sp"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Na detailu kampaně se dozvíte více  informacía opět můžete pomocí  akčních tlačítek třídit a sdílet samotný spot."
+        android:text="@string/campaign_detail_help"
         android:textSize="14sp"
         android:gravity="center"
         android:layout_marginLeft="10dp"

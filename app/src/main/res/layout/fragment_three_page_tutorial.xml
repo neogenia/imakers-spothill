@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="RYCHLÉ FUNKCE"
+        android:text="@string/quick_function"
         android:textSize="23sp"
         android:gravity="center"
         android:layout_gravity="center_horizontal"
@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Už na výpisu kampaní můžete pomocí gesty tažením zleva a zprava jednoduše roztřídit spoty do jednotlivých kategorií nebo je sdílet s přáteli."
+        android:text="@string/quick_function_help"
         android:textSize="14sp"
         android:gravity="center"
         android:layout_marginLeft="10dp"
@@ -34,5 +34,4 @@
         android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/tutorial_image_three"/>
-
 </LinearLayout>

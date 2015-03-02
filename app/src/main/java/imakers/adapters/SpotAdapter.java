@@ -1,14 +1,10 @@
 package imakers.adapters;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.os.Handler;
-import android.os.Looper;
 import android.text.Html;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,15 +13,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.fortysevendeg.swipelistview.SwipeListView;
-import com.google.gson.Gson;
 import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,14 +28,11 @@ import imakers.beacons.R;
 import imakers.classes.Campaign;
 import imakers.classes.Category;
 import imakers.classes.Providers;
-import imakers.classes.Spot;
 import imakers.interfaces.MyAsyncLisener;
 import imakers.tools.MyApplication;
 import imakers.tools.MyHttpClient;
 import imakers.tools.MyUtils;
 
-
-//
 public class SpotAdapter extends ArrayAdapter<Campaign> {
 
     List<Campaign> list;
@@ -123,7 +113,7 @@ public class SpotAdapter extends ArrayAdapter<Campaign> {
 
             String[] date = list.get(position).getDateTo().split(" ")[0].split("-");
 
-            ((TextView) v.findViewById(R.id.item_counter_text)).setText("Končí: " + date[2] + "." + date[1] + "." + date[0]);
+            ((TextView) v.findViewById(R.id.item_counter_text)).setText(c.getString(R.string.ends)+ " " + date[2] + "." + date[1] + "." + date[0]);
             ((ImageView) v.findViewById(R.id.item_image)).setImageDrawable(null);
 
             switch (list.get(position).getType()) {
@@ -153,10 +143,9 @@ public class SpotAdapter extends ArrayAdapter<Campaign> {
                     } else {
                         finalV.findViewById(R.id.red_separate).setVisibility(View.VISIBLE);
                         try {
-
                             ((TextView) finalV.findViewById(R.id.mark)).setText(list.get(position).getProvider().getTitle());
                             ((TextView) finalV.findViewById(R.id.region)).setText(list.get(position).getCategory().getTitle());
-
+	                        ((TextView) finalV.findViewById(R.id.spot)).setText(c.getString(R.string.this_campaign));
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -394,7 +383,7 @@ public class SpotAdapter extends ArrayAdapter<Campaign> {
             v.findViewById(R.id.swipe_share).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String s = "Právě jsem využil " + list.get(position).getTitle() + (list.get(position).getProvider().getTitle().isEmpty() ? "" : " od poskytovatele " + list.get(position).getProvider().getTitle()) + ". Využijte také výhody aplikace <a href='http://www.spothill.com'>spothill</a>.";
+                    String s = c.getString(R.string.share_text_begin) + " " + list.get(position).getTitle() + (list.get(position).getProvider().getTitle().isEmpty() ? "" : " "+ c.getString(R.string.share_text_middle) + " " + list.get(position).getProvider().getTitle()) + c.getString(R.string.share_text_end) + " <a href='http://www.spothill.com'>spothill</a>.";
                     Intent sendIntent = new Intent();
                     sendIntent.setAction(Intent.ACTION_SEND);
                     sendIntent.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(s));

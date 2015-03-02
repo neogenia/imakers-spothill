@@ -27,7 +27,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:text="Jméno a příjmení"
+                android:text="@string/name_surname"
                 android:textColor="#919191"/>
 
             <TextView
@@ -36,14 +36,13 @@
                 android:textSize="16sp"
                 android:id="@+id/name"
                 android:layout_marginTop="1dp"
-                android:text="Martin Kluska"
                 android:textColor="#000"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
-                android:text="Email"
+                android:text="@string/email"
                 android:layout_marginTop="10dp"
                 android:textColor="#919191"/>
 
@@ -53,7 +52,6 @@
                 android:textSize="16sp"
                 android:id="@+id/email"
                 android:layout_marginTop="1dp"
-                android:text="martin@kluska.cz"
                 android:textColor="#000"/>
 
             <LinearLayout
@@ -67,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:text="Muž"
+                    android:text="@string/male"
                     android:tag="1"
                     android:textSize="18sp"
                     android:gravity="center"
@@ -79,7 +77,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
-                    android:text="Žena"
+                    android:text="@string/female"
                     android:textSize="18sp"
                     android:gravity="center"
                     android:id="@+id/woman"
@@ -92,7 +90,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_edit_text"
-                android:hint="Jméno"
+                android:hint="@string/name"
                 android:id="@+id/name_edit"
                 android:gravity="center"
                 android:singleLine="true"
@@ -103,7 +101,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_edit_text"
-                android:hint="Příjmení"
+                android:hint="@string/surname"
                 android:id="@+id/sur_name_edit"
                 android:gravity="center"
                 android:singleLine="true"
@@ -115,7 +113,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_edit_text"
-                android:hint="Staré heslo"
+                android:hint="@string/old_password"
                 android:id="@+id/old_password"
                 android:gravity="center"
                 android:password="true"
@@ -127,7 +125,7 @@
                 android:layout_height="50dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/background_edit_text"
-                android:hint="Nové heslo"
+                android:hint="@string/new_password"
                 android:id="@+id/password"
                 android:gravity="center"
                 android:password="true"
@@ -146,6 +144,6 @@
         android:layout_alignParentBottom="true"
         android:id="@+id/registration_button"
         android:gravity="center"
-        android:text="ULOŽIT PROFIL"/>
+        android:text="@string/save_profile"/>
 
 </RelativeLayout>

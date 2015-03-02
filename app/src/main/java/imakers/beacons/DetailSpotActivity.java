@@ -2,19 +2,15 @@ package imakers.beacons;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import java.util.ArrayList;
-import java.util.Random;
-
 import imakers.classes.ChangeClass;
 import imakers.tools.MyActionPanel;
 import imakers.tools.MyApplication;
@@ -50,7 +46,7 @@ public class DetailSpotActivity extends Activity {
         setContentView(R.layout.activity_detail_spot);
 
         //Nastavování custom panel, který jsem vytvořil + akci při back tlačítku
-        panel = new MyActionPanel(this, "DETAIL SPOTU");
+        panel = new MyActionPanel(this, getString(R.string.campaign_detail));
         panel.setActionForBack(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +63,7 @@ public class DetailSpotActivity extends Activity {
                 String s = "";
                 try {
 
-                    s = "Právě jsem využil " + getIntent().getStringExtra("name_spot") + (getIntent().getStringExtra("name").isEmpty() ? "" : " od poskytovatele " + getIntent().getStringExtra("name")) + ". Využijte také výhody aplikace <a href='http://www.spothill.com'>spothill</a>.";
+	                s = getString(R.string.share_text_begin)+ " " + getIntent().getStringExtra("name_spot") + (getIntent().getStringExtra("name").isEmpty() ? "" :  " " + getString(R.string.share_text_middle) + " " + getIntent().getStringExtra("name")) + getString(R.string.share_text_end) + " <a href='http://www.spothill.com'>spothill</a>.";
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -85,6 +81,7 @@ public class DetailSpotActivity extends Activity {
         //nastavování webview
         WebView webView = (WebView)findViewById(R.id.web_view);
         webView.getSettings().setJavaScriptEnabled(true);
+	    webView.setWebChromeClient(new WebChromeClient());
         webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.setInitialScale(30);
@@ -97,15 +94,12 @@ public class DetailSpotActivity extends Activity {
         //zde jsem musel přepsat načítání kvůli dialogu a načítání změn
         webView.setWebViewClient(new WebViewClient() {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
-                view.loadUrl(url);
-
-                return true;
+	            view.getContext().startActivity(
+					new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
+	            return true;
             }
 
             public void onPageFinished(WebView view, String url) {
-
-                Log.v("kalkub",url);
 
                 //načítání změn, který jsou inteligentní, může být více změn najednou
 
@@ -146,6 +140,5 @@ public class DetailSpotActivity extends Activity {
 
         webView.loadUrl(MyApplication.API_URL+"api/campaign/" + getIntent().getLongExtra("id", 1) + "/?hash="+((MyApplication)getApplicationContext()).getHash());
     }
-
 
 }

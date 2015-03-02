@@ -138,7 +138,7 @@ public class LoginActivity extends Activity {
         isStart = getIntent().getBooleanExtra("isStart", false);
         isLogout = getIntent().getBooleanExtra("logout", false);
 
-        panel = new MyActionPanel(this, "PŘIHLÁŠENÍ");
+        panel = new MyActionPanel(this, getString(R.string.login_title));
 
         if(isStart || isLogout) {
             panel.hideBack();
@@ -235,7 +235,7 @@ public class LoginActivity extends Activity {
 
                     @Override
                     public void onNotAcceptingPermissions(Permission.Type type) {
-                        Crouton.makeText(LoginActivity.this, "Přihlášení přes FB se nepodařilo", Style.ALERT).show();
+                        Crouton.makeText(LoginActivity.this, getString(R.string.fb_login_failed), Style.ALERT).show();
                     }
 
                     @Override
@@ -245,13 +245,13 @@ public class LoginActivity extends Activity {
 
                     @Override
                     public void onException(Throwable throwable) {
-                        Crouton.makeText(LoginActivity.this, "Přihlášení přes FB se nepodařilo", Style.ALERT).show();
+                        Crouton.makeText(LoginActivity.this, getString(R.string.fb_login_failed), Style.ALERT).show();
 
                     }
 
                     @Override
                     public void onFail(String s) {
-                        Crouton.makeText(LoginActivity.this, "Přihlášení přes FB se nepodařilo", Style.ALERT).show();
+                        Crouton.makeText(LoginActivity.this, getString(R.string.fb_login_failed), Style.ALERT).show();
 
                     }
                 });
@@ -399,7 +399,7 @@ public class LoginActivity extends Activity {
 
                                 } catch (Exception e) {
 
-                                    MyUtils.showToast("Špatně zadané údaje! Prosím zkuste to znovu", LoginActivity.this);
+                                    MyUtils.showToast(getString(R.string.wrong_log_in), LoginActivity.this);
 
                                     e.printStackTrace();
                                 }
@@ -413,7 +413,7 @@ public class LoginActivity extends Activity {
                     MyUtils.dissmissDialog(LoginActivity.this);
                 }
                 else {
-                    MyUtils.showToast("Špatně zadané údaje! Prosím zkuste to znovu", LoginActivity.this);
+                    MyUtils.showToast(getString(R.string.wrong_log_in), LoginActivity.this);
                 }
 
             }

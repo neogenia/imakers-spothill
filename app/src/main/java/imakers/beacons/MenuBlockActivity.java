@@ -53,13 +53,13 @@ public class MenuBlockActivity extends Activity {
         isCat = getIntent().getBooleanExtra("isCat", false);
 
         if(isCat) {
-          panel.setText("BLOKOVANÉ KATEGORIE");
-            ((TextView)findViewById(R.id.place_holder_text)).setText("Žádné kategorie");
+          panel.setText(getString(R.string.blocked_categories_title));
+            ((TextView)findViewById(R.id.place_holder_text)).setText(getString(R.string.no_categories));
             favoriteCategory();
         }
         else {
-            panel.setText("BLOKOVANÍ POSKYTOVATELÉ");
-            ((TextView)findViewById(R.id.place_holder_text)).setText("Žádní poskytovatelé");
+            panel.setText(getString(R.string.blocked_providers_title));
+            ((TextView)findViewById(R.id.place_holder_text)).setText(getString(R.string.no_providers));
             favoriteMarks();
         }
 

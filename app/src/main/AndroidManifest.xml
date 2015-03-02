@@ -46,7 +46,8 @@
         </activity>
         <activity
             android:name=".DetailSpotActivity"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+	        android:hardwareAccelerated="true">
         </activity>
         <activity
             android:name=".LoginActivity"

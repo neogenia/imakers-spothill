@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/no_campaigns_history"
+		android:layout_centerInParent="true"
+		android:textColor="#9f9f9f"
+		android:id="@+id/place_holder_text"
+		android:visibility="gone"
+		android:textSize="18sp"/>
+
+	<LinearLayout
+		android:id="@+id/view1"
+		android:layout_width="fill_parent"
+		android:layout_height="45dp"
+		android:background="#065fac"
+		android:orientation="horizontal">
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:textColor="#FFF"
+			android:textSize="17sp"
+			android:layout_weight="1"
+			android:text="@string/today"
+			android:background="#055296"
+			android:id="@+id/today"
+			android:gravity="center"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:textColor="#FFF"
+			android:textSize="17sp"
+			android:layout_weight="1"
+			android:text="@string/this_week"
+			android:id="@+id/week"
+			android:gravity="center"/>
+
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:textColor="#FFF"
+			android:textSize="17sp"
+			android:layout_weight="1"
+			android:text="@string/all"
+			android:id="@+id/all"
+			android:gravity="center"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:textColor="#FFF"
+			android:textSize="17sp"
+			android:layout_weight="1"
+			android:text="@string/blocked"
+			android:id="@+id/blocked"
+			android:gravity="center"/>
+
+	</LinearLayout>
+
+
+	<com.fortysevendeg.swipelistview.SwipeListView
+		xmlns:swipe="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/listview"
+		android:listSelector="#00000000"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/view1"
+		swipe:swipeFrontView="@+id/front"
+		swipe:swipeBackView="@+id/back"
+		android:divider="#FFF"
+		android:dividerHeight="0px"/>
+
+</RelativeLayout>

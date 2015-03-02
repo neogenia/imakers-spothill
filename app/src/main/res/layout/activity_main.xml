@@ -1,72 +1,68 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:background="#FFF"
-    android:layout_height="match_parent">
+	android:layout_width="match_parent"
+	android:background="#FFF"
+	android:layout_height="match_parent">
 
-    <include
-        layout="@layout/my_panel_layout"
-        android:layout_width="fill_parent"
-        android:id="@+id/top_panel"
-        android:layout_height="55dp" />
+	<include
+		layout="@layout/my_panel_layout"
+		android:layout_width="fill_parent"
+		android:id="@+id/top_panel"
+		android:layout_height="55dp" />
 
+	<FrameLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_below="@+id/top_panel"
+		android:layout_above="@+id/view11"
+		android:id="@+id/frame_layout"></FrameLayout>
 
-    <FrameLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/top_panel"
-        android:layout_above="@+id/view11"
-        android:id="@+id/frame_layout"></FrameLayout>
+	<View
+		android:layout_width="fill_parent"
+		android:layout_height="2px"
+		android:id="@+id/view11"
+		android:layout_above="@+id/menu"
+		android:background="#e9e6e6" />
 
+	<LinearLayout
+		android:layout_width="fill_parent"
+		android:layout_height="50dp"
+		android:background="#f9f6f6"
+		android:id="@+id/menu"
+		android:orientation="horizontal"
+		android:layout_alignParentBottom="true">
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="2px"
-        android:id="@+id/view11"
-        android:layout_above="@+id/menu"
-        android:background="#e9e6e6" />
+		<ImageView
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:id="@+id/menu_one"
+			android:src="@drawable/ic_menu_first"
+			android:padding="10dp"
+			android:background="#e9e6e6"
+			android:layout_weight=".25"/>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="#f9f6f6"
-        android:id="@+id/menu"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
+		<ImageView
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:id="@+id/menu_two"
+			android:src="@drawable/ic_menu_two"
+			android:padding="10dp"
+			android:layout_weight=".25"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_one"
-            android:src="@drawable/ic_menu_first"
-            android:padding="10dp"
-            android:background="#e9e6e6"
-            android:layout_weight=".25"/>
+		<ImageView
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:id="@+id/menu_three"
+			android:src="@drawable/ic_menu_three"
+			android:padding="10dp"
+			android:layout_weight=".25"/>
 
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_two"
-            android:src="@drawable/ic_menu_two"
-            android:padding="10dp"
-            android:layout_weight=".25"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_three"
-            android:src="@drawable/ic_menu_three"
-            android:padding="10dp"
-            android:layout_weight=".25"/>
-
-        <ImageView
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_four"
-            android:src="@drawable/ic_menu_four"
-            android:padding="10dp"
-            android:layout_weight=".25"/>
-
-    </LinearLayout>
+		<ImageView
+			android:layout_width="0dp"
+			android:layout_height="fill_parent"
+			android:id="@+id/menu_four"
+			android:src="@drawable/ic_menu_four"
+			android:padding="10dp"
+			android:layout_weight=".25"/>
+	</LinearLayout>
 
 </RelativeLayout>

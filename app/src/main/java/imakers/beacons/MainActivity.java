@@ -5,22 +5,14 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import imakers.fragments.FavoriteFragment;
-import imakers.fragments.HistoriFragment;
+import imakers.fragments.HistoryFragment;
 import imakers.fragments.HomeFragment;
 import imakers.fragments.ReminderFragment;
 import imakers.tools.MyActionPanel;
@@ -53,13 +45,13 @@ public class MainActivity extends Activity {
             // Device does not support Bluetooth
         } else {
             if (!mBluetoothAdapter.isEnabled()) {
-                Toast.makeText(this, "Bluetooth není aktivováno, prosím aktivujte bluetooth.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.bt_not_activated), Toast.LENGTH_LONG).show();
             }
         }
 
         actual = 0;
 
-        panel = new MyActionPanel(this, "KAMPANĚ");
+        panel = new MyActionPanel(this, getString(R.string.campaigns_title));
 
         panel.hideBack();
         panel.showMenu(new View.OnClickListener() {
@@ -79,7 +71,7 @@ public class MainActivity extends Activity {
                     reset();
                     favorite();
                     actual = 2;
-                    panel.setText("OBLÍBENÉ");
+                    panel.setText(getString(R.string.favourites_title));
                     ((ImageView)findViewById(R.id.menu_three)).setImageResource(R.drawable.ic_menu_three_active);
                     ((ImageView)findViewById(R.id.menu_three)).setBackgroundColor(Color.parseColor("#e9e6e6"));
                 }
@@ -96,7 +88,7 @@ public class MainActivity extends Activity {
                     reset();
                     home();
                     actual = 0;
-                    panel.setText("KAMPANĚ");
+                    panel.setText(getString(R.string.campaigns_title));
                     ((ImageView)findViewById(R.id.menu_one)).setImageResource(R.drawable.ic_menu_first);
                     ((ImageView)findViewById(R.id.menu_one)).setBackgroundColor(Color.parseColor("#e9e6e6"));
                 }
@@ -110,7 +102,7 @@ public class MainActivity extends Activity {
                     reset();
                     historie();
                     actual = 3;
-                    panel.setText("HISTORIE");
+                    panel.setText(getString(R.string.history_title));
                     ((ImageView)findViewById(R.id.menu_four)).setImageResource(R.drawable.ic_menu_four_active);
                     ((ImageView)findViewById(R.id.menu_four)).setBackgroundColor(Color.parseColor("#e9e6e6"));
                 }
@@ -124,7 +116,7 @@ public class MainActivity extends Activity {
                     reset();
                     reminder();
                     actual = 1;
-                    panel.setText("PŘIPOMÍNAČ");
+                    panel.setText(getString(R.string.reminder_title));
                     ((ImageView)findViewById(R.id.menu_two)).setImageResource(R.drawable.ic_menu_two_active);
                     ((ImageView)findViewById(R.id.menu_two)).setBackgroundColor(Color.parseColor("#e9e6e6"));
                 }
@@ -186,7 +178,7 @@ public class MainActivity extends Activity {
 
     void historie() {
 
-        Fragment newFragment = new HistoriFragment();
+        Fragment newFragment = new HistoryFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
         transaction.replace(R.id.frame_layout, newFragment);

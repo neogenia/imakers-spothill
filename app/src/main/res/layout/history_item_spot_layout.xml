@@ -1,127 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/back"
-        android:layout_height="110dp"
-        android:layout_width="fill_parent"
-        android:tag="back" >
+	<RelativeLayout
+		android:id="@+id/back"
+		android:layout_height="110dp"
+		android:layout_width="fill_parent"
+		android:tag="back" >
 
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:id="@+id/swipe_share"
-            android:background="#065fac"
-            android:layout_height="fill_parent">
+		<RelativeLayout
+			android:layout_width="80dp"
+			android:id="@+id/swipe_share"
+			android:background="#065fac"
+			android:layout_height="fill_parent">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="23dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/ic_share" />
+			<ImageView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:padding="23dp"
+				android:layout_centerInParent="true"
+				android:src="@drawable/ic_share"/>
 
-        </RelativeLayout>
+		</RelativeLayout>
 
+	</RelativeLayout>
 
-    </RelativeLayout>
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:id="@+id/front"
+		android:tag="front"
+		android:background="#FFFFFF"
+		android:layout_height="110dp">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:id="@+id/front"
-        android:tag="front"
-        android:background="#FFFFFF"
-        android:layout_height="110dp">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:src="@drawable/thumb_image"
-            android:id="@+id/item_image"
-            android:adjustViewBounds="true"/>
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sleva 50 Kč na Hotsnacky"
-            android:textSize="17sp"
-            android:gravity="center"
-            android:id="@+id/item_text"
-            android:layout_toRightOf="@+id/item_image"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#999999"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hotsnack jsou kvalitní polotovary na smažení. Sleva platí na celý sortiment, tak neváhejte a skočte si k nám."
-            android:textSize="12sp"
-            android:gravity="left"
-            android:layout_toLeftOf="@+id/arrow"
-            android:id="@+id/item_desc"
-            android:maxLines="3"
-            android:layout_below="@+id/item_text"
-            android:layout_toRightOf="@+id/item_image"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#666666"/>
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/arrow"
-            android:src="@drawable/ic_arrow_right"/>
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="fill_parent"
+			android:src="@drawable/thumb_image"
+			android:id="@+id/item_image"
+			android:adjustViewBounds="true"/>
 
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/item_image"
-            android:layout_alignTop="@+id/item_image"
-            android:src="@drawable/thumb_image"
-            android:id="@+id/item_type"
-            android:adjustViewBounds="true"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Sleva 50 Kč na Hotsnacky"
+			android:textSize="17sp"
+			android:gravity="center"
+			android:id="@+id/item_text"
+			android:layout_toRightOf="@+id/item_image"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="5dp"
+			android:textColor="#999999"/>
 
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/heart"
-            android:layout_alignBottom="@+id/item_image"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/item_image"
-            android:src="@drawable/ic_item_heart"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Hotsnack jsou kvalitní polotovary na smažení. Sleva platí na celý sortiment, tak neváhejte a skočte si k nám."
+			android:textSize="12sp"
+			android:gravity="left"
+			android:layout_toLeftOf="@+id/arrow"
+			android:id="@+id/item_desc"
+			android:maxLines="3"
+			android:layout_below="@+id/item_text"
+			android:layout_toRightOf="@+id/item_image"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="5dp"
+			android:textColor="#666666"/>
 
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/count_icon"
-            android:layout_alignBottom="@+id/item_image"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/heart"
-            android:src="@drawable/ic_item_count"/>
+		<ImageView
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			android:id="@+id/arrow"
+			android:src="@drawable/ic_arrow_right"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Zbývá: 2 765x"
-            android:textSize="11sp"
-            android:gravity="center"
-            android:id="@+id/item_counter_text"
-            android:layout_toRightOf="@+id/count_icon"
-            android:layout_alignBottom="@+id/count_icon"
-            android:layout_marginLeft="10dp"
-            android:textColor="#065fac"/>
 
-    </RelativeLayout>
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/item_image"
+			android:layout_alignTop="@+id/item_image"
+			android:src="@drawable/thumb_image"
+			android:id="@+id/item_type"
+			android:adjustViewBounds="true"/>
+
+		<ImageView
+			android:layout_width="15dp"
+			android:layout_height="15dp"
+			android:layout_marginLeft="10dp"
+			android:id="@+id/heart"
+			android:layout_alignBottom="@+id/item_image"
+			android:layout_marginBottom="10dp"
+			android:layout_toRightOf="@+id/item_image"
+			android:src="@drawable/ic_item_heart"/>
+
+		<ImageView
+			android:layout_width="15dp"
+			android:layout_height="15dp"
+			android:layout_marginLeft="10dp"
+			android:id="@+id/count_icon"
+			android:layout_alignBottom="@+id/item_image"
+			android:layout_marginBottom="10dp"
+			android:layout_toRightOf="@+id/heart"
+			android:src="@drawable/ic_item_count"/>
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="Zbývá: 2 765x"
+			android:textSize="11sp"
+			android:gravity="center"
+			android:id="@+id/item_counter_text"
+			android:layout_toRightOf="@+id/count_icon"
+			android:layout_alignBottom="@+id/count_icon"
+			android:layout_marginLeft="10dp"
+			android:textColor="#065fac"/>
+
+	</RelativeLayout>
 
 </FrameLayout>

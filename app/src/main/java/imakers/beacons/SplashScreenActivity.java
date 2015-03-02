@@ -84,8 +84,8 @@ public class SplashScreenActivity extends Activity {
                 }
             }, SPLASH_DISPLAY_LENGTH);
         } else {
-            showAlertDialogInternet(SplashScreenActivity.this, "Nedostupné internetové připojení",
-                    "Žádné internetové připojení, prosím připojte se k internetu", false);
+            showAlertDialogInternet(SplashScreenActivity.this, getString(R.string.no_internet_acces),
+                    getString(R.string.check_internet_connection), false);
         }
 
 
@@ -97,13 +97,13 @@ public class SplashScreenActivity extends Activity {
         builder.setIcon(R.drawable.ic_launcher);
         builder.setTitle(title);
         builder.setMessage(message);
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.ok_button), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 SplashScreenActivity.this.finish();
             }
         });
-        builder.setNegativeButton("Nastaveni", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getString(R.string.settings), new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {

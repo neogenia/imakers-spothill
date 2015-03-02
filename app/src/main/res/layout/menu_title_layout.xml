@@ -1,34 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/back"
-        android:tag="back"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent" >
+	<RelativeLayout
+		android:id="@+id/back"
+		android:tag="back"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent">
+	</RelativeLayout>
 
-    </RelativeLayout>
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:id="@+id/front"
+		android:tag="front"
+		android:background="@drawable/divider_repeat"
+		android:layout_height="wrap_content">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:id="@+id/front"
-        android:tag="front"
-        android:background="@drawable/divider_repeat"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:textColor="#FFF"
-            android:textSize="12sp"
-            android:text="KAMPANĚ V OKOLÍ"
-            />
-
-    </RelativeLayout>
-
+		<TextView
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerInParent="true"
+			android:gravity="center"
+			android:textColor="#FFF"
+			android:textSize="12sp"
+			android:text="@string/campaigns_nearby"
+			/>
+	</RelativeLayout>
 </FrameLayout>

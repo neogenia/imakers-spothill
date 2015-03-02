@@ -1,5 +1,5 @@
 <resources>
-        <string name="title_activity_login">PŘIHLÁŠENÍ</string>
+        <string name="title_activity_login">LOGIN</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>

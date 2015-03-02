@@ -1,57 +1,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
 
     <include
         layout="@layout/my_panel_layout"
         android:layout_width="fill_parent"
         android:id="@+id/top_panel"
         android:layout_height="55dp" />
-
-    <!--<LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:background="#f9f6f6"
-        android:id="@+id/menu"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_first"
-            android:src="@drawable/ic_menu_first"
-            android:padding="13dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_two"
-            android:src="@drawable/ic_menu_two"
-            android:padding="13dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_three"
-            android:src="@drawable/ic_menu_three"
-            android:padding="13dp"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:id="@+id/menu_four"
-            android:src="@drawable/ic_menu_four"
-            android:padding="13dp"
-            android:layout_weight="1"/>
-
-    </LinearLayout>-->
 
     <WebView
         android:layout_width="fill_parent"
@@ -61,5 +16,4 @@
         android:layout_height="fill_parent">
 
    </WebView>
-
 </RelativeLayout>

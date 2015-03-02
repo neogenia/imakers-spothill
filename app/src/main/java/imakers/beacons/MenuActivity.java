@@ -36,7 +36,7 @@ public class MenuActivity extends Activity {
         super.onResume();
 
         //nastavení panelu a aktuální stránky
-        panel = new MyActionPanel(this, "MENU");
+        panel = new MyActionPanel(this, getString(R.string.menu_title));
         panel.showBack();
 
 
@@ -57,7 +57,7 @@ public class MenuActivity extends Activity {
 
         //když se načte z paměti login tak kontroluju jestli není prázdný a zároveň se nesmí rovnat false, protože to by znamenalo, že je lognutý, jako anonymní uživatel
         if(!MyUtils.LoadPreferences("login", this).isEmpty() && !MyUtils.LoadPreferences("login", MenuActivity.this).contains("false")) {
-            ((TextView)findViewById(R.id.login_text)).setText("Odhlásit se");
+            ((TextView)findViewById(R.id.login_text)).setText(getString(R.string.log_out));
             try {
                 JSONObject object = new JSONObject(MyUtils.LoadPreferences("login_json", this));
 
@@ -85,7 +85,7 @@ public class MenuActivity extends Activity {
                     startActivity(new Intent(MenuActivity.this, LoginActivity.class).putExtra("isStart", false));
                 }
                 else {
-                    ((TextView)findViewById(R.id.login_text)).setText("Přihlásit se k účtu");
+                    ((TextView)findViewById(R.id.login_text)).setText(getString(R.string.log_in_user));
                     findViewById(R.id.profile).setVisibility(View.GONE);
                     MyUtils.SavePreferences("login", "", MenuActivity.this);
                     MyUtils.SavePreferences("login_json", "", MenuActivity.this);

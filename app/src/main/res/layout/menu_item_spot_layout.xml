@@ -1,227 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+	android:orientation="vertical" android:layout_width="match_parent"
+	android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/back"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:tag="back" >
+	<RelativeLayout
+		android:id="@+id/back"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent"
+		android:tag="back" >
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:id="@+id/red_separate"
-            android:visibility="gone"
-            android:background="#df263c"
-            android:layout_below="@+id/swipe_share">
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="70dp"
+			android:orientation="horizontal"
+			android:id="@+id/red_separate"
+			android:visibility="gone"
+			android:background="#df263c"
+			android:layout_below="@+id/swipe_share">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:text="ZNAČKA"
-                android:gravity="center"
-                android:textColor="#FFFFFF"
-                android:id="@+id/mark"
-                android:layout_weight="1"/>
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="fill_parent"
+				android:gravity="center"
+				android:textColor="#FFFFFF"
+				android:id="@+id/mark"
+				android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:text="Tuto Kampaň"
-                android:textColor="#FFFFFF"
-                android:gravity="center"
-                android:id="@+id/spot"
-                android:background="#f2344b"
-                android:layout_weight="1"/>
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="fill_parent"
+				android:textColor="#FFFFFF"
+				android:gravity="center"
+				android:id="@+id/spot"
+				android:background="#f2344b"
+				android:layout_weight="1"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:text="OBLAST"
-                android:textColor="#FFFFFF"
-                android:gravity="center"
-                android:id="@+id/region"
-                android:layout_weight="1"/>
+			<TextView
+				android:layout_width="0dp"
+				android:layout_height="fill_parent"
+				android:textColor="#FFFFFF"
+				android:gravity="center"
+				android:id="@+id/region"
+				android:layout_weight="1"/>
 
-        </LinearLayout>
+		</LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:id="@+id/swipe_share"
-            android:visibility="invisible"
-            android:background="#065fac"
-            android:layout_height="110dp">
+		<RelativeLayout
+			android:layout_width="80dp"
+			android:id="@+id/swipe_share"
+			android:visibility="invisible"
+			android:background="#065fac"
+			android:layout_height="110dp">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="23dp"
-                android:layout_centerInParent="true"
-                android:src="@android:drawable/ic_menu_share" />
+			<ImageView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:padding="23dp"
+				android:layout_centerInParent="true"
+				android:src="@android:drawable/ic_menu_share" />
 
-        </RelativeLayout>
+		</RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_alignParentRight="true"
-            android:id="@+id/swipe_delete"
-            android:background="#f2344b"
-            android:tag="0"
-            android:visibility="invisible"
-            android:layout_height="110dp">
+		<RelativeLayout
+			android:layout_width="80dp"
+			android:layout_alignParentRight="true"
+			android:id="@+id/swipe_delete"
+			android:background="#f2344b"
+			android:tag="0"
+			android:visibility="invisible"
+			android:layout_height="110dp">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="23dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/delete" />
+			<ImageView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:padding="23dp"
+				android:layout_centerInParent="true"
+				android:src="@drawable/delete" />
 
-        </RelativeLayout>
+		</RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_toLeftOf="@+id/swipe_delete"
-            android:id="@+id/swipe_heart"
-            android:background="#faa62f"
-            android:tag="0"
-            android:visibility="invisible"
-            android:layout_height="110dp">
+		<RelativeLayout
+			android:layout_width="80dp"
+			android:layout_toLeftOf="@+id/swipe_delete"
+			android:id="@+id/swipe_heart"
+			android:background="#faa62f"
+			android:tag="0"
+			android:visibility="invisible"
+			android:layout_height="110dp">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="17dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/heart_plus" />
+			<ImageView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:padding="17dp"
+				android:layout_centerInParent="true"
+				android:src="@drawable/heart_plus" />
 
-        </RelativeLayout>
+		</RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="80dp"
-            android:layout_toLeftOf="@+id/swipe_heart"
-            android:id="@+id/swipe_alarm"
-            android:background="#28ce82"
-            android:tag="0"
-            android:visibility="invisible"
-            android:layout_height="110dp">
+		<RelativeLayout
+			android:layout_width="80dp"
+			android:layout_toLeftOf="@+id/swipe_heart"
+			android:id="@+id/swipe_alarm"
+			android:background="#28ce82"
+			android:tag="0"
+			android:visibility="invisible"
+			android:layout_height="110dp">
 
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:padding="24dp"
-                android:layout_centerInParent="true"
-                android:src="@drawable/reminder_plus" />
+			<ImageView
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+				android:padding="24dp"
+				android:layout_centerInParent="true"
+				android:src="@drawable/reminder_plus" />
 
-        </RelativeLayout>
+		</RelativeLayout>
 
-        <!--<ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_alarm_swipe"
-            android:layout_toLeftOf="@+id/swipe_heart"
-            android:id="@+id/swipe_alarm" />-->
+	</RelativeLayout>
 
-    </RelativeLayout>
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:id="@+id/front"
+		android:tag="front"
+		android:background="#FFFFFF"
+		android:layout_height="110dp">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:id="@+id/front"
-        android:tag="front"
-        android:background="#FFFFFF"
-        android:layout_height="110dp">
+		<View
+			android:layout_width="fill_parent"
+			android:layout_height="2px"
+			android:background="#ededed"
+			android:layout_alignParentBottom="true"
+			android:id="@+id/view1"
+			android:layout_toRightOf="@+id/item_image"
+			android:layout_marginLeft="10dp" />
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2px"
-            android:background="#ededed"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/view1"
-            android:layout_toRightOf="@+id/item_image"
-            android:layout_marginLeft="10dp" />
+		<ImageView
+			android:layout_width="110dp"
+			android:layout_height="110dp"
+			android:id="@+id/item_image"
+			android:scaleType="centerCrop"
+			android:adjustViewBounds="true"/>
 
-        <ImageView
-            android:layout_width="110dp"
-            android:layout_height="110dp"
-            android:id="@+id/item_image"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/item_image"
-            android:layout_alignTop="@+id/item_image"
-            android:id="@+id/item_type"
-            android:adjustViewBounds="true"/>
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignLeft="@+id/item_image"
+			android:layout_alignTop="@+id/item_image"
+			android:id="@+id/item_type"
+			android:adjustViewBounds="true"/>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sleva 50 Kč na Hotsnacky"
-            android:textSize="15sp"
-            android:gravity="left"
-            android:maxLines="1"
-            android:id="@+id/item_text"
-            android:layout_toRightOf="@+id/item_image"
-            android:layout_marginLeft="10dp"
-            android:layout_toLeftOf="@+id/arrow"
-            android:layout_marginTop="5dp"
-            android:textColor="#999999"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="15sp"
+			android:gravity="left"
+			android:maxLines="1"
+			android:id="@+id/item_text"
+			android:layout_toRightOf="@+id/item_image"
+			android:layout_marginLeft="10dp"
+			android:layout_toLeftOf="@+id/arrow"
+			android:layout_marginTop="5dp"
+			android:textColor="#999999"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hotsnack jsou kvalitní pol\nmdwlefmwelfmewlmfwelmfwelm weklfmwel fkwefkweotovary na smažení. Sleva platí na celý sortiment, tak neváhejte a skočte si k nám."
-            android:textSize="11sp"
-            android:gravity="left"
-            android:layout_toLeftOf="@+id/arrow"
-            android:id="@+id/item_desc"
-            android:maxLines="4"
-            android:layout_below="@+id/item_text"
-            android:layout_toRightOf="@+id/item_image"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="3dp"
-            android:textColor="#666666"/>
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="11sp"
+			android:gravity="left"
+			android:layout_toLeftOf="@+id/arrow"
+			android:id="@+id/item_desc"
+			android:maxLines="4"
+			android:layout_below="@+id/item_text"
+			android:layout_toRightOf="@+id/item_image"
+			android:layout_marginLeft="10dp"
+			android:layout_marginTop="3dp"
+			android:textColor="#666666"/>
 
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/arrow"
-            android:src="@drawable/ic_arrow_right"/>
+		<ImageView
+			android:layout_width="25dp"
+			android:layout_height="25dp"
+			android:layout_centerVertical="true"
+			android:layout_alignParentRight="true"
+			android:layout_marginRight="10dp"
+			android:layout_marginLeft="10dp"
+			android:id="@+id/arrow"
+			android:src="@drawable/ic_arrow_right"/>
 
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/count_icon"
-            android:layout_alignBottom="@+id/item_image"
-            android:layout_marginBottom="10dp"
-            android:layout_toRightOf="@+id/item_image"
-            android:src="@drawable/ic_calendar"/>
+		<ImageView
+			android:layout_width="15dp"
+			android:layout_height="15dp"
+			android:layout_marginLeft="10dp"
+			android:id="@+id/count_icon"
+			android:layout_alignBottom="@+id/item_image"
+			android:layout_marginBottom="10dp"
+			android:layout_toRightOf="@+id/item_image"
+			android:src="@drawable/ic_calendar"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Zbývá: 2 765x"
-            android:textSize="11sp"
-            android:gravity="center"
-            android:id="@+id/item_counter_text"
-            android:layout_toRightOf="@+id/count_icon"
-            android:layout_alignBottom="@+id/count_icon"
-            android:layout_marginLeft="10dp"
-            android:textColor="#065fac"/>
-
-    </RelativeLayout>
-
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="11sp"
+			android:gravity="center"
+			android:id="@+id/item_counter_text"
+			android:layout_toRightOf="@+id/count_icon"
+			android:layout_alignBottom="@+id/count_icon"
+			android:layout_marginLeft="10dp"
+			android:textColor="#065fac"/>
+	</RelativeLayout>
 </FrameLayout>

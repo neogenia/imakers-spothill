@@ -40,7 +40,7 @@ public class RegistrationActivity extends Activity {
 
         isStart = getIntent().getBooleanExtra("isStart", false);
 
-        panel = new MyActionPanel(this, "REGISTRACE");
+        panel = new MyActionPanel(this, getString(R.string.registration_title));
 
         isMan = true;
 
@@ -83,23 +83,23 @@ public class RegistrationActivity extends Activity {
 
                 //ověření podmínek
                 if(name.isEmpty()) {
-                    MyUtils.showToast("Prázdné jméno", RegistrationActivity.this);
+                    MyUtils.showToast(getString(R.string.empty_name), RegistrationActivity.this);
                     return;
                 }
                 if(surname.isEmpty()) {
-                    MyUtils.showToast("Prázdné příjmení", RegistrationActivity.this);
+                    MyUtils.showToast(getString(R.string.empty_surname), RegistrationActivity.this);
                     return;
                 }
                 if(email.isEmpty() && email.contains("@")) {
-                    MyUtils.showToast("Prázdný email.", RegistrationActivity.this);
+                    MyUtils.showToast(getString(R.string.empty_email), RegistrationActivity.this);
                     return;
                 }
                 if(pass.isEmpty()) {
-                    MyUtils.showToast("Prázdné heslo.", RegistrationActivity.this);
+                    MyUtils.showToast(getString(R.string.empty_password), RegistrationActivity.this);
                     return;
                 }
                 if(!agree) {
-                    MyUtils.showToast("Musíte souhlasit s podmínkama.", RegistrationActivity.this);
+                    MyUtils.showToast(getString(R.string.empty_terms_conditions), RegistrationActivity.this);
                     return;
                 }
 
@@ -156,7 +156,7 @@ public class RegistrationActivity extends Activity {
                                         finish();
                                     }
 
-                                    MyUtils.showToast("Registrace byla úspěšná.", RegistrationActivity.this);
+                                    MyUtils.showToast(getString(R.string.registration_succes), RegistrationActivity.this);
 
 
                                 } catch (Exception e) {
